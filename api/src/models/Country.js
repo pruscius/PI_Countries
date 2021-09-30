@@ -4,9 +4,11 @@ const { DataTypes, FLOAT } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('country', {
-    // id: {
-    //   type: DataTypes.
-    // },
+    id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,7 +23,7 @@ module.exports = (sequelize) => {
     },
     capital: {
       type: DataTypes.STRING,
-      // allowNull: false
+      allowNull: false
     },
     subregion: {
       type: DataTypes.STRING
@@ -32,6 +34,7 @@ module.exports = (sequelize) => {
     population: {
       type: DataTypes.FLOAT
     }
-
+  }, {
+    timestamps: false
   });
 };
