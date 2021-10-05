@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
-import { getCountries } from '../actions/actions.js';
-import Country from './Country.jsx';
+import { getCountries } from '../../actions/actions.js';
+import Country from '../Country/Country.jsx';
+import styles from './Home.module.css'; 
 
 function Home ({ countries, getCountries }) {
     const [input, setInput] = useState('');
@@ -22,8 +23,8 @@ function Home ({ countries, getCountries }) {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+        <div>
+            <form onSubmit={handleSubmit} className={styles.input}>
                 <input 
                     name="countryName" 
                     type="text" 
@@ -41,7 +42,7 @@ function Home ({ countries, getCountries }) {
 
                 }
             </div>
-        </>
+        </div>
     )
 }
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 // const axios = require('axios');
 
-const SEARCH_COUNTRY = "SEARCH_COUNTRY";
+// const SEARCH_COUNTRY = "SEARCH_COUNTRY";
 const GET_COUNTRIES = "GET_COUNTRIES";
 
 export function getCountries () {
