@@ -32,3 +32,5 @@ getData();
 // react-redux redux
 // Axios
 // redux-devtools-extension
+
+//set client_encoding to 'utf8'
