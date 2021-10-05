@@ -26,3 +26,9 @@ const getData = async () => {
 }
 // invoco la función para obtener los datos de la API.
 getData();
+
+// redux-thunk
+// react-router-dom
+// react-redux redux
+// Axios
+// redux-devtools-extension

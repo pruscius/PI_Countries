@@ -9,7 +9,14 @@ router.get('/', async (req, res) => {
     const { name } = req.query;
     if (name) {
         try {
-
+            const country = await Country.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: `%${name}%`
+                    }
+                }
+            });
+            res.send(country.length > 0 ? country : 'No country found.');
         } catch(e) {
             res.status(500).send('Server error.');
         }
@@ -28,7 +35,12 @@ router.get('/:id', async (req, res) => {
     id = id.toUpperCase();
     try {
         const country = await Country.findByPk(id, {
-            include: Activity
+            include: [{
+                model: Activity,
+                through: {
+                  attributes: []
+                }
+              }]
         })
         res.send(country ? country : 'No country found.');
     } catch (e) {
