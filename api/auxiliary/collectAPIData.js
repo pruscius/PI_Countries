@@ -34,3 +34,5 @@ getData();
 // redux-devtools-extension
 
 //set client_encoding to 'utf8'
+
+// https://restcountries.com/v2/all

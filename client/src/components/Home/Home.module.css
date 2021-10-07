@@ -3,3 +3,19 @@
     justify-content: center;
 }
 
+.selects {
+    display: flex;
+    flex-direction: row
+}
+
+.filter {
+    margin: 10px
+}
+
+.order {
+    margin: 10px
+}
+
+.alph_pop {
+    margin-right: 5px;
+}

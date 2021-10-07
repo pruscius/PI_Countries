@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
                     name: {
                         [Op.iLike]: `%${name}%`
                     }
-                }
+                },
+                include: Activity
             });
             res.send(country.length > 0 ? country : 'No country found.');
         } catch(e) {
@@ -22,7 +23,9 @@ router.get('/', async (req, res) => {
         }
     } else {
         try {
-            const countries = await Country.findAll();
+            const countries = await Country.findAll({
+                include: Activity
+            });
             res.send(countries.length > 0 ? countries : 'No countries found.');
         } catch(e){
             res.status(500).send('Server error.')
