@@ -1,8 +1,3 @@
-.input {
-    display: flex;
-    justify-content: center;
-}
-
 .selects {
     display: flex;
     flex-direction: row

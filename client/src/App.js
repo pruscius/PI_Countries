@@ -1,23 +1,22 @@
-import { Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Home from './components/Home/Home.jsx';
-import styles from './App.module.css';
+import About from './components/About/About.jsx';
+import Landing from './components/Landing/Landing.jsx';
+// import styles from './App.module.css';
+import CreateActivity from './components/CreateActivity/CreateActivity.jsx';
+import CountryDetail from './components/CountryDetail/CountryDetail.jsx';
 
 function App() {
   return (
-    <div>  
+    <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <Link to="/home">
-            <div className={styles.app}>
-              <button>Home</button>
-            </div>
-          </Link>
-        </Route>
-        <Route exact path="/home">
-          <Home />
-        </Route>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/about" component={About}/>
+        <Route exact path="/postActivity" component={CreateActivity} />
+        <Route path="/countries/:id" component={CountryDetail}/>
       </Switch>
-    </div>
+    </BrowserRouter>
   );
 }
 

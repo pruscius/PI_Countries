@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCountries, filterByContinent, orderAlph } from '../../actions/actions.js';
+import { getCountries, filterByContinent, orderCountries } from '../../actions/actions.js';
 import Country from '../Country/Country.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
+import NavBar from "../NavBar/NavBar.jsx";
 import styles from './Home.module.css'; 
 
-function Home ({ countries, getCountries, filterByContinent, orderAlph }) {
-    const [input, setInput] = useState('');
+function Home ({ countries, getCountries, filterByContinent, orderCountries }) {
+    const [payload, setPayload] = useState({
+        ascDesc: 'asc',
+        alphPop: ''
+    });
     const [order, setOrder] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(10); 
@@ -19,43 +24,68 @@ function Home ({ countries, getCountries, filterByContinent, orderAlph }) {
     }
     
     useEffect(() => {
-        getCountries()        
+        getCountries();
     }, [getCountries]);
-
-    function handleChange(e){
-        setInput(e.target.value);
+    
+    function handleRefreshClick(e){
+        getCountries();
     };
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        alert(input);
-        // fetchCountry(input);
-        setInput('');
-    };
-
+    
     function handleFilterContinent(e) {
         filterByContinent(e.target.value);
     };
 
-    function handleSort(e) {
+
+    function handleClick() {
+        orderCountries(payload);
+        setOrder(`Ordered ${payload}`);
+    };
+
+    function handleAlphPop(e) {
         e.preventDefault();
-        orderAlph(e.target.value);
-        setCurrentPage(1);
-        setOrder(`Ordered ${e.target.value}`)
-    }
+        setPayload({...payload, alphPop: e.target.value});
+    };
+
+    function handleAscDesc(e){
+        e.preventDefault();
+        setPayload({...payload, ascDesc: e.target.value});
+    };
+
+    // function handleAlphPop(e) {
+    //     e.preventDefault();
+    //     if (payload.alphPop === 'alph') {
+    //         // setPayload({...payload, alphPop: e.target.value});
+    //         orderCountries(payload);
+    //         console.log('handleAlphPop', payload);
+    //         setPayload({...payload, alphPop: 'pop'})
+    //     }
+    //     if (payload.alphPop === 'pop') {
+    //         // setPayload({...payload, alphPop: e.target.value});
+    //         orderCountries(payload);
+    //         console.log('handleAlphPop', payload);
+    //         setPayload({...payload, alphPop: 'alph'})
+    //     }
+    // }
+
+    // function handleAscDesc(e) {
+    //     e.preventDefault();
+    //     if (payload.ascDesc === 'asc') {
+    //         // setPayload({...payload, ascDesc: e.target.value});
+    //         console.log('handleAscDesc', payload);
+    //         orderCountries(payload);
+    //         setPayload({...payload, ascDesc: 'desc'});
+    //     }
+    //     if (payload.ascDesc === 'desc') {
+    //         // setPayload({...payload, ascDesc: e.target.value});
+    //         console.log('handleAscDesc', payload);
+    //         orderCountries(payload);
+    //         setPayload({...payload, ascDesc: 'desc'});
+    //     }
+    // }
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className={styles.input}>
-                <input 
-                    name="countryName" 
-                    type="text" 
-                    placeholder="Search countries..."
-                    value={input}
-                    onChange={handleChange}
-                />
-                <input type="submit" value="Search" />
-            </form>
+            <NavBar />
             <div className={styles.selects}>
                 <div className={styles.filter}>
                     <h4>Filter By:</h4>
@@ -76,14 +106,23 @@ function Home ({ countries, getCountries, filterByContinent, orderAlph }) {
                 </div>
                 <div className={styles.order}>
                     <h4>Order By:</h4>
-                    <select className={styles.alph_pop}>
+                    <select className={styles.alph_pop} 
+                        onChange={e => handleAlphPop(e)}>
+                        <option>- Select option -</option>
                         <option value="alph">Alphabetical Order</option>
-                        <option value="population">Population Count</option>
+                        <option value="pop">Population Count</option>
                     </select>
-                    <select onChange={e => handleSort(e)}>
+                    <select onChange={e => handleAscDesc(e)}>
                         <option value="asc">Ascending</option>
                         <option value="desc">Descending</option>
                     </select>
+                    <button onClick={handleClick}>Order</button>
+                </div>
+                <div>
+                    <button onClick={e => handleRefreshClick(e)}>Refresh Countries</button>
+                    <Link to="/postActivity">
+                        <button>Create Activity</button>
+                    </Link>
                 </div>
             </div>           
             <Pagination 
@@ -97,8 +136,9 @@ function Home ({ countries, getCountries, filterByContinent, orderAlph }) {
                         <Country 
                         id={c.id}
                         name={c.name}
-                        flag={c.flag} 
+                        flag={c.flag}
                         region={c.region}
+                        population={c.population}
                         />
                     ))
                 }
@@ -113,4 +153,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getCountries, filterByContinent, orderAlph })(Home);
+
+export default connect(mapStateToProps, { getCountries, filterByContinent, orderCountries })(Home);

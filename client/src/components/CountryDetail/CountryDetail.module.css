@@ -1,0 +1,13 @@
+.card {
+        border: solid;
+        border-radius: 5px;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center
+}
+
+.flag {
+    height: 200px;
+    width: 300px
+}
