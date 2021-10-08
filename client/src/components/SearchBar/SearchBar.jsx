@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getCountryName } from '../../actions/actions.js';
 import styles from './SearchBar.module.css';
 
-function SearchBar ({ countries, getCountryName }) {
+export default function SearchBar () {
+
+    // const countries = useSelector(s => s.filteredCountries); // si lo quiero usar tengo que importar useSec
+    const dispatch = useDispatch();
 
     const [name, setName] = useState('')
 
@@ -13,7 +16,7 @@ function SearchBar ({ countries, getCountryName }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        getCountryName(name)
+        dispatch(getCountryName(name));
         setName('');
     };
 
@@ -30,11 +33,3 @@ function SearchBar ({ countries, getCountryName }) {
             </form>
     )
 }
-
-const mapStateToProps = (state) => {
-    return {
-        countries: state.filteredCountries
-    }
-} 
-
-export default connect (mapStateToProps, { getCountryName })(SearchBar)

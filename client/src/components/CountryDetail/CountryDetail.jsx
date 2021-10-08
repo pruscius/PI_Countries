@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { getDetail } from '../../actions/actions.js';
 import styles from './CountryDetail.module.css';
 
-function CountryDetail ({ country, getDetail }) {
+export default function CountryDetail () {
+    const country = useSelector(s => s.countryDetail)
+    const dispatch = useDispatch();
     const { id } = useParams();
 
     useEffect(() => {
-        getDetail(id)
-    }, [getDetail, id]);
+        dispatch(getDetail(id))
+    }, [dispatch, id]);
 
     return (
         <div>
@@ -38,10 +40,3 @@ function CountryDetail ({ country, getDetail }) {
         </div>
     )
 }
-
-const mapStateToProps = (state) => {
-    return {
-        country: state.countryDetail
-    }
-}
-export default connect (mapStateToProps, { getDetail })(CountryDetail)

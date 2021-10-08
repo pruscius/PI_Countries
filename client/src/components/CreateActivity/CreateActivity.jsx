@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getCountries, postActivity } from '../../actions/actions.js';
 import NavBar from "../NavBar/NavBar.jsx";
 import axios from 'axios';
@@ -14,7 +14,7 @@ function validate (data, countryId) {
         errors.difficulty = 'You must set a difficulty level for your activity.';
     }
     if (!data.duration) { // regexp para float?
-        errors.duration = 'Your activity must have a duration in hours';
+        errors.duration = 'Your activity must have a duration set in hours';
     } 
     if(!data.season.length) { // ENUM no es taxativo? o se puede mas de uno?
         errors.season = 'You must set at least one season for your activity';
@@ -25,14 +25,17 @@ function validate (data, countryId) {
     return errors;
 }
 
-function CreateActivity({ getCountries, postActivity, countries }){
+export default function CreateActivity(){
+
+    const countries = useSelector(s => s.countries);
+    const dispatch = useDispatch();
 
     const [errors, setErrors] = useState({});
     const [countryId, setCountryId] = useState([]);
 
     useEffect(() => {
-        getCountries();
-    }, [getCountries]); 
+        dispatch(getCountries());
+    }, [dispatch]); 
 
     const [activityPost, setActivityPost] = useState({
         name: '',
@@ -210,10 +213,3 @@ function CreateActivity({ getCountries, postActivity, countries }){
         </div>
     )
 }
-
-const mapStateToProps = (state) => {
-    return {
-        countries: state.countries
-    }
-}
-export default connect (mapStateToProps, { getCountries, postActivity })(CreateActivity);

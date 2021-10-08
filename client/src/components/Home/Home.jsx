@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCountries, filterByContinent, orderCountries } from '../../actions/actions.js';
 import Country from '../Country/Country.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
 import NavBar from "../NavBar/NavBar.jsx";
 import styles from './Home.module.css'; 
 
-function Home ({ countries, getCountries, filterByContinent, orderCountries }) {
+export default function Home () {
+    const countries = useSelector(s => s.filteredCountries);
+    const dispatch = useDispatch();
+
     const [payload, setPayload] = useState({
         ascDesc: 'asc',
         alphPop: ''
@@ -24,20 +27,20 @@ function Home ({ countries, getCountries, filterByContinent, orderCountries }) {
     }
     
     useEffect(() => {
-        getCountries();
-    }, [getCountries]);
+        dispatch(getCountries());
+    }, [dispatch]);
     
-    function handleRefreshClick(e){
-        getCountries();
+    function handleRefreshClick(){
+        dispatch(getCountries());
     };
     
     function handleFilterContinent(e) {
-        filterByContinent(e.target.value);
+        dispatch(filterByContinent(e.target.value));
     };
 
 
     function handleClick() {
-        orderCountries(payload);
+        dispatch(orderCountries(payload));
         setOrder(`Ordered ${payload}`);
     };
 
@@ -119,7 +122,7 @@ function Home ({ countries, getCountries, filterByContinent, orderCountries }) {
                     <button onClick={handleClick}>Order</button>
                 </div>
                 <div>
-                    <button onClick={e => handleRefreshClick(e)}>Refresh Countries</button>
+                    <button onClick={handleRefreshClick}>Refresh Countries</button>
                     <Link to="/postActivity">
                         <button>Create Activity</button>
                     </Link>
@@ -132,7 +135,9 @@ function Home ({ countries, getCountries, filterByContinent, orderCountries }) {
             />
             <div>
                 {
-                    currentCountries?.map(c=> (
+                    currentCountries === "No country" ? 
+                    <p>No country found</p> :
+                    currentCountries.map(c=> (
                         <Country 
                         id={c.id}
                         name={c.name}
@@ -146,12 +151,3 @@ function Home ({ countries, getCountries, filterByContinent, orderCountries }) {
         </div>
     )
 }
-
-const mapStateToProps = (state) => {
-    return {
-        countries: state.filteredCountries
-    }
-}
-
-
-export default connect(mapStateToProps, { getCountries, filterByContinent, orderCountries })(Home);
