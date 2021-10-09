@@ -14,10 +14,10 @@ function validate (data, countryId) {
         errors.difficulty = 'You must set a difficulty level for your activity.';
     }
     if (!data.duration) { // regexp para float?
-        errors.duration = 'Your activity must have a duration set in hours';
+        errors.duration = 'Your activity must have a duration set in hours (only dots and numbers)';
     } 
-    if(!data.season.length) { // ENUM no es taxativo? o se puede mas de uno?
-        errors.season = 'You must set at least one season for your activity';
+    if(!data.seasons.length) { // ENUM no es taxativo? o se puede mas de uno?
+        errors.seasons = 'You must set at least one season for your activity';
     } 
     if (!countryId.length) {
         errors.countryId = 'You must choose at least one country for your activity';
@@ -35,7 +35,6 @@ export default function CreateActivity(){
     const [order, setOrder] = useState('');
 
     useEffect(() => {
-        // dispatch(orderCountriesAlphAZ());
         dispatch(getCountries());
     }, [dispatch]); 
 
@@ -43,7 +42,7 @@ export default function CreateActivity(){
         name: '',
         difficulty: '',
         duration: '',
-        season: ''
+        seasons: []
     });
 
     function handleClick(){
@@ -54,10 +53,22 @@ export default function CreateActivity(){
     function handleChange(e) {
         if (e.target.name === 'countryId') {
             setCountryId([...countryId, e.target.value]);
+        } else if (e.target.name === 'seasons') {
+            if (e.target.checked){
+                setActivityPost({
+                    ...activityPost,
+                    seasons: activityPost.seasons.concat(e.target.value)
+                }) 
+            } else if(!e.target.checked) {
+                activityPost.seasons && setActivityPost({
+                    ...activityPost,
+                    seasons: activityPost.seasons.filter(s => s !== e.target.value)
+                }) 
+            }
         } else {
             setActivityPost({
-                ...activityPost, 
-                [e.target.name]: e.target.value});
+            ...activityPost, 
+            [e.target.name]: e.target.value});
         }
         setErrors(validate({
             ...activityPost,
@@ -75,7 +86,7 @@ export default function CreateActivity(){
                 name: '',
                 difficulty: '',
                 duration: '',
-                season: ''
+                seasons: ''
             })
             setCountryId([]);
         } else {
@@ -150,11 +161,11 @@ export default function CreateActivity(){
                     }
                 </div>
                 <div>
-                    <label>Season: </label>
+                    <label>Seasons: </label>
                     <label>
                         <input
                             type="checkbox"
-                            name="season"
+                            name="seasons"
                             value="Summer"    
                             onChange={(e) => handleChange(e)}
                         />
@@ -163,7 +174,7 @@ export default function CreateActivity(){
                     <label>
                         <input
                             type="checkbox"
-                            name="season"
+                            name="seasons"
                             value="Fall"    
                             onChange={(e) => handleChange(e)}
                         />
@@ -172,7 +183,7 @@ export default function CreateActivity(){
                     <label>
                         <input
                             type="checkbox"
-                            name="season"
+                            name="seasons"
                             value="Winter"    
                             onChange={(e) => handleChange(e)}
                         />
@@ -181,15 +192,15 @@ export default function CreateActivity(){
                     <label>
                         <input
                             type="checkbox"
-                            name="season"
+                            name="seasons"
                             value="Spring"    
                             onChange={(e) => handleChange(e)}
                         />
                         Spring
                     </label>
                     {
-                        errors.season && (
-                        <p className={styles.err}>{errors.season}</p>
+                        errors.seasons && (
+                        <p className={styles.err}>{errors.seasons}</p>
                         )
                     }
                 </div>

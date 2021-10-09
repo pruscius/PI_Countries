@@ -14,15 +14,17 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const { name, difficulty, duration, season, countryId } = req.body;
-    console.log(countryId);
+    const { name, difficulty, duration, countryId } = req.body;
+    let { seasons } = req.body;
+    seasons = seasons.join(', ')
+    console.log(seasons);
     try {
         const activity = await Activity.findOrCreate({
             where: {
                 name: name,
                 difficulty: difficulty,
                 duration: duration,
-                season: season
+                seasons: seasons
             }
         });
 

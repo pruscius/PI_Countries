@@ -22,7 +22,9 @@ export default function CountryDetail () {
                 country ?
                 <div key={country.id} className={styles.card}>
                     <h1>{country.name}</h1>
-                    <img src={country.flag} alt="Not found" className={styles.flag}/>
+                    <a href={country.flag}>
+                    <img src={country.flag}alt="Not found" className={styles.flag}/>
+                    </a>
                     <p>Continent: {country.region}</p>
                     <p>Population: {country.population}</p>
                     <p>Capital: {country.capital}</p>
@@ -31,7 +33,7 @@ export default function CountryDetail () {
                     <p>Activities: </p>
                     {
                         country.activities?.map(a => (
-                            <p>{a.name}</p>
+                            <p>{a.name} in {a.seasons}</p>
                         ))
                     }
                 </div> : 

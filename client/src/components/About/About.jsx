@@ -7,7 +7,10 @@ export default function About(){
             <Link to="/home">
                 <button>Home</button>
             </Link>
-            <p>About</p>
+            <h2>About</h2>
+            <p>This is an individual project developed by Andrés Frank, for the puropse of evaluation 
+                from the teaching instructors at Henry School of Web Development.
+            </p>
         </>
     )
 }

@@ -48,6 +48,7 @@ export default function Home () {
             <div className={styles.selects}>
                 <div className={styles.filter}>
                     <h4>Filter By:</h4>
+                    <p>Continent: </p>
                     <select onChange={(e) => { handleFilterContinent(e) }}>
                         <option value="All">All</option>
                         <option value="Africa">Africa</option>
@@ -59,6 +60,7 @@ export default function Home () {
                         <option value="Oceania">Oceania</option>
                         <option value="Polar">Polar</option>                        
                     </select>
+                    <p>Activity</p>
                     <select onChange={e => handleFilterActivity(e)}>
                         <option value="All">All</option>
                         {  
