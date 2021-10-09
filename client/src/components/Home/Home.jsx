@@ -5,6 +5,8 @@ import { getCountries, filterByContinent, orderCountries } from '../../actions/a
 import Country from '../Country/Country.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
 import NavBar from "../NavBar/NavBar.jsx";
+import OrderAlph from "../OrderAlph/OrderAlph.jsx";
+import OrderPop from "../OrderPop/OrderPop.jsx";
 import styles from './Home.module.css'; 
 
 export default function Home () {
@@ -39,20 +41,20 @@ export default function Home () {
     };
 
 
-    function handleClick() {
-        dispatch(orderCountries(payload));
-        setOrder(`Ordered ${payload}`);
-    };
+    // function handleClick() {
+    //     dispatch(orderCountries(payload));
+    //     setOrder(`Ordered ${payload}`);
+    // };
 
-    function handleAlphPop(e) {
-        e.preventDefault();
-        setPayload({...payload, alphPop: e.target.value});
-    };
+    // function handleAlphPop(e) {
+    //     e.preventDefault();
+    //     setPayload({...payload, alphPop: e.target.value});
+    // };
 
-    function handleAscDesc(e){
-        e.preventDefault();
-        setPayload({...payload, ascDesc: e.target.value});
-    };
+    // function handleAscDesc(e){
+    //     e.preventDefault();
+    //     setPayload({...payload, ascDesc: e.target.value});
+    // };
 
     // function handleAlphPop(e) {
     //     e.preventDefault();
@@ -107,7 +109,9 @@ export default function Home () {
                         <option>- Select Activity -</option>
                     </select>
                 </div>
-                <div className={styles.order}>
+                <OrderAlph order={order} setOrder={setOrder} />
+                <OrderPop  order={order} setOrder={setOrder}/>
+                {/* <div className={styles.order}>
                     <h4>Order By:</h4>
                     <select className={styles.alph_pop} 
                         onChange={e => handleAlphPop(e)}>
@@ -120,7 +124,7 @@ export default function Home () {
                         <option value="desc">Descending</option>
                     </select>
                     <button onClick={handleClick}>Order</button>
-                </div>
+                </div> */}
                 <div>
                     <button onClick={handleRefreshClick}>Refresh Countries</button>
                     <Link to="/postActivity">

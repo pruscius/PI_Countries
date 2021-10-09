@@ -5,10 +5,14 @@ const GET_COUNTRIES = "GET_COUNTRIES";
 const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 // const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
 const GET_COUNTRY_NAME = "GET_COUNTRY_NAME";
-const ORDER_COUNTRIES = "ORDER_COUNTRIES";
+// const ORDER_COUNTRIES = "ORDER_COUNTRIES";
 // const ORDER_ASC_DESC = "ORDER_ASC_DESC";
 // const POST_ACTIVITY = "POST_ACTIVITY";
 const GET_DETAILS = "GET_DETAILS";
+const ORDER_COUNTRIES_ALPH_AZ = "ORDER_COUNTRIES_ALPH_AZ";
+const ORDER_COUNTRIES_ALPH_ZA = "ORDER_COUNTRIES_ALPH_ZA";
+const ORDER_COUNTRIES_POP_ASC = "ORDER_COUNTRIES_POP_ASC";
+const ORDER_COUNTRIES_POP_DESC = "ORDER_COUNTRIES_POP_DESC";
 
 
 export function getCountries () {
@@ -32,12 +36,35 @@ export function filterByContinent (payload) {
     }
 }
 
-export function orderCountries(payload) {
+export function orderCountriesAlphAZ () {
     return {
-        type: ORDER_COUNTRIES,
-        payload
+        type: ORDER_COUNTRIES_ALPH_AZ
     }
 }
+
+export function orderCountriesAlphZA () {
+    return {
+        type: ORDER_COUNTRIES_ALPH_ZA
+    }
+}
+
+export function orderCountriesPopAsc () {
+    return {
+        type: ORDER_COUNTRIES_POP_ASC
+    }
+}
+
+export function orderCountriesPopDesc () {
+    return {
+        type: ORDER_COUNTRIES_POP_DESC
+    }
+}
+// export function orderCountries(payload) {
+//     return {
+//         type: ORDER_COUNTRIES,
+//         payload
+//     }
+// }
 
 // export function orderAscDesc(payload) {
 //     return {

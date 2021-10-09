@@ -4,7 +4,6 @@ import About from './components/About/About.jsx';
 import Landing from './components/Landing/Landing.jsx';
 import CreateActivity from './components/CreateActivity/CreateActivity.jsx';
 import CountryDetail from './components/CountryDetail/CountryDetail.jsx';
-import Test from './Test.jsx';
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route exact path="/about" component={About}/>
         <Route exact path="/postActivity" component={CreateActivity} />
         <Route path="/countries/:id" component={CountryDetail}/>
-        <Route exact path="/test" component={Test} />
       </Switch>
     </BrowserRouter>
   );

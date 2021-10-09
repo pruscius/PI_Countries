@@ -25,9 +25,8 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 filteredCountries: filterContinent
             };
-        case "ORDER_COUNTRIES":
+        case "ORDER_COUNTRIES_ALPH_AZ":
             let orderedCountries = state.filteredCountries;
-            if(action.payload.alphPop === 'alph' && action.payload.ascDesc === 'asc') {
                 orderedCountries.sort(function(a, b) {
                     if (a.name > b.name) {
                         return 1;
@@ -37,9 +36,13 @@ const rootReducer = (state = initialState, action) => {
                     }
                     return 0;
                 })
-            } 
-            if (action.payload.alphPop === 'alph' && action.payload.ascDesc === 'desc') {
-                orderedCountries.sort(function(a, b) {
+                return {
+                    ...state,
+                    filteredCountries: orderedCountries
+                };
+            case "ORDER_COUNTRIES_ALPH_ZA":
+                let orderedCountries1 = state.filteredCountries;
+                orderedCountries1.sort(function(a, b) {
                     if (a.name > b.name) {
                         return -1;
                     }
@@ -47,10 +50,14 @@ const rootReducer = (state = initialState, action) => {
                         return 1;
                     }
                     return 0;
-                })
-            }
-            if(action.payload.alphPop === 'pop' && action.payload.ascDesc === 'asc') {
-                orderedCountries.sort(function(a, b) {
+                });
+                return {
+                    ...state,
+                    filteredCountries: orderedCountries1
+                }; 
+            case "ORDER_COUNTRIES_POP_ASC":
+                let orderedCountries2 = state.filteredCountries;
+                orderedCountries2.sort(function(a, b) {
                     if (a.population > b.population) {
                         return 1;
                     }
@@ -58,10 +65,14 @@ const rootReducer = (state = initialState, action) => {
                         return -1;
                     }
                     return 0;
-                })
-            } 
-            if (action.payload.alphPop === 'pop' && action.payload.ascDesc === 'desc') {
-                orderedCountries.sort(function(a, b) {
+                });
+                return {
+                    ...state,
+                    filteredCountries: orderedCountries2
+                };
+            case "ORDER_COUNTRIES_POP_DESC":
+                let orderedCountries3 = state.filteredCountries;
+                orderedCountries3.sort(function(a, b) {
                     if (a.population > b.population) {
                         return -1;
                     }
@@ -69,12 +80,10 @@ const rootReducer = (state = initialState, action) => {
                         return 1;
                     }
                     return 0;
-                })
-            }
-            console.log(state.filteredCountries);
+                });
             return {
                 ...state,
-                filteredCountries: orderedCountries
+                filteredCountries: orderedCountries3
             };
         // case "FILTER_BY_ACTIVITY":
         //     let activitiesBis = state.activities;
