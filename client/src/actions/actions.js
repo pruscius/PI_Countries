@@ -1,13 +1,10 @@
 import axios from 'axios';
 
-// const SEARCH_COUNTRY = "SEARCH_COUNTRY";
 const GET_COUNTRIES = "GET_COUNTRIES";
+const GET_ACTIVITIES = "GET_ACTIVITIES";
 const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
-// const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
+const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
 const GET_COUNTRY_NAME = "GET_COUNTRY_NAME";
-// const ORDER_COUNTRIES = "ORDER_COUNTRIES";
-// const ORDER_ASC_DESC = "ORDER_ASC_DESC";
-// const POST_ACTIVITY = "POST_ACTIVITY";
 const GET_DETAILS = "GET_DETAILS";
 const ORDER_COUNTRIES_ALPH_AZ = "ORDER_COUNTRIES_ALPH_AZ";
 const ORDER_COUNTRIES_ALPH_ZA = "ORDER_COUNTRIES_ALPH_ZA";
@@ -29,6 +26,20 @@ export function getCountries () {
     }
 }
 
+export function getActivities () {
+    return async function(dispatch) {
+        try {
+            let activities = await axios.get('http://localhost:3001/activity');
+            dispatch({
+                type: GET_ACTIVITIES,
+                payload: activities.data
+            })
+        } catch(e){
+            console.log(e);
+        }
+    }
+}
+
 export function filterByContinent (payload) {
     return {
         type: FILTER_BY_CONTINENT,
@@ -36,6 +47,12 @@ export function filterByContinent (payload) {
     }
 }
 
+export function filterByActivity (payload) {
+    return {
+            type: FILTER_BY_ACTIVITY,
+            payload
+    }
+}
 export function orderCountriesAlphAZ () {
     return {
         type: ORDER_COUNTRIES_ALPH_AZ
@@ -59,19 +76,6 @@ export function orderCountriesPopDesc () {
         type: ORDER_COUNTRIES_POP_DESC
     }
 }
-// export function orderCountries(payload) {
-//     return {
-//         type: ORDER_COUNTRIES,
-//         payload
-//     }
-// }
-
-// export function orderAscDesc(payload) {
-//     return {
-//         type: ORDER_ASC_DESC,
-//         payload
-//     }
-// }
 
 
 export function getCountryName(payload) {
@@ -115,26 +119,3 @@ export function getDetail(id){
         }
     }
 }
-// export function filterActivity (apyload) {
-//     return {
-//             type: FILTER_BY_ACTIVITY,
-//             payload
-//     }
-// }
-
-// export function fetchCountry (country) {
-//     return function (dispatch) {
-//         fetch(`localhost:3001/countries?name=${country}`)
-//             .then(response => response.json())
-//             .then(data => {
-//                 let countries = data.map(c => {
-//                 return {
-//                     id: c.id,
-//                     name: c.name
-//                 }
-//             })
-//             dispatch(searchCountry(countries));
-//         })
-//         .catch(e => console.log(e))
-//         }
-// }

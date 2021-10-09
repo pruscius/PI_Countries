@@ -31,7 +31,7 @@ export default function CountryDetail () {
                     <p>Activities: </p>
                     {
                         country.activities?.map(a => (
-                            <p>{a}</p>
+                            <p>{a.name}</p>
                         ))
                     }
                 </div> : 

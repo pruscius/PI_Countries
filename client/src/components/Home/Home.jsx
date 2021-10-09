@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries, filterByContinent, orderCountries } from '../../actions/actions.js';
+import { getCountries, filterByContinent, getActivities, filterByActivity } from '../../actions/actions.js';
 import Country from '../Country/Country.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
 import NavBar from "../NavBar/NavBar.jsx";
@@ -11,12 +11,9 @@ import styles from './Home.module.css';
 
 export default function Home () {
     const countries = useSelector(s => s.filteredCountries);
+    const activities = useSelector(s => s.filteredActivities)
     const dispatch = useDispatch();
 
-    const [payload, setPayload] = useState({
-        ascDesc: 'asc',
-        alphPop: ''
-    });
     const [order, setOrder] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(10); 
@@ -30,6 +27,7 @@ export default function Home () {
     
     useEffect(() => {
         dispatch(getCountries());
+        dispatch(getActivities());
     }, [dispatch]);
     
     function handleRefreshClick(){
@@ -40,54 +38,10 @@ export default function Home () {
         dispatch(filterByContinent(e.target.value));
     };
 
-
-    // function handleClick() {
-    //     dispatch(orderCountries(payload));
-    //     setOrder(`Ordered ${payload}`);
-    // };
-
-    // function handleAlphPop(e) {
-    //     e.preventDefault();
-    //     setPayload({...payload, alphPop: e.target.value});
-    // };
-
-    // function handleAscDesc(e){
-    //     e.preventDefault();
-    //     setPayload({...payload, ascDesc: e.target.value});
-    // };
-
-    // function handleAlphPop(e) {
-    //     e.preventDefault();
-    //     if (payload.alphPop === 'alph') {
-    //         // setPayload({...payload, alphPop: e.target.value});
-    //         orderCountries(payload);
-    //         console.log('handleAlphPop', payload);
-    //         setPayload({...payload, alphPop: 'pop'})
-    //     }
-    //     if (payload.alphPop === 'pop') {
-    //         // setPayload({...payload, alphPop: e.target.value});
-    //         orderCountries(payload);
-    //         console.log('handleAlphPop', payload);
-    //         setPayload({...payload, alphPop: 'alph'})
-    //     }
-    // }
-
-    // function handleAscDesc(e) {
-    //     e.preventDefault();
-    //     if (payload.ascDesc === 'asc') {
-    //         // setPayload({...payload, ascDesc: e.target.value});
-    //         console.log('handleAscDesc', payload);
-    //         orderCountries(payload);
-    //         setPayload({...payload, ascDesc: 'desc'});
-    //     }
-    //     if (payload.ascDesc === 'desc') {
-    //         // setPayload({...payload, ascDesc: e.target.value});
-    //         console.log('handleAscDesc', payload);
-    //         orderCountries(payload);
-    //         setPayload({...payload, ascDesc: 'desc'});
-    //     }
-    // }
-
+    function handleFilterActivity(e){
+        dispatch(filterByActivity(e.target.value));
+    }
+    
     return (
         <div>
             <NavBar />
@@ -105,38 +59,31 @@ export default function Home () {
                         <option value="Oceania">Oceania</option>
                         <option value="Polar">Polar</option>                        
                     </select>
-                    <select>
-                        <option>- Select Activity -</option>
+                    <select onChange={e => handleFilterActivity(e)}>
+                        <option value="All">All</option>
+                        {  
+                            activities?.map(a => (
+                                <option>{a.name}</option>
+                            ))
+                        }
                     </select>
                 </div>
                 <OrderAlph order={order} setOrder={setOrder} />
                 <OrderPop  order={order} setOrder={setOrder}/>
-                {/* <div className={styles.order}>
-                    <h4>Order By:</h4>
-                    <select className={styles.alph_pop} 
-                        onChange={e => handleAlphPop(e)}>
-                        <option>- Select option -</option>
-                        <option value="alph">Alphabetical Order</option>
-                        <option value="pop">Population Count</option>
-                    </select>
-                    <select onChange={e => handleAscDesc(e)}>
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
-                    <button onClick={handleClick}>Order</button>
-                </div> */}
                 <div>
                     <button onClick={handleRefreshClick}>Refresh Countries</button>
                     <Link to="/postActivity">
                         <button>Create Activity</button>
                     </Link>
                 </div>
+            </div>
+            <div>
+                <Pagination 
+                    countriesPerPage={countriesPerPage}
+                    countries={countries.length}
+                    pagination={pagination}
+                />
             </div>           
-            <Pagination 
-                countriesPerPage={countriesPerPage}
-                countries={countries.length}
-                pagination={pagination}
-            />
             <div>
                 {
                     currentCountries === "No country" ? 
@@ -152,6 +99,13 @@ export default function Home () {
                     ))
                 }
             </div>
+            <div>
+                <Pagination 
+                    countriesPerPage={countriesPerPage}
+                    countries={countries.length}
+                    pagination={pagination}
+                />
+            </div>             
         </div>
     )
 }

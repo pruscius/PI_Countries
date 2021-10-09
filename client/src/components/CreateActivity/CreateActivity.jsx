@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCountries, postActivity } from '../../actions/actions.js';
+import { getCountries, orderCountriesAlphAZ } from '../../actions/actions.js';
 import NavBar from "../NavBar/NavBar.jsx";
 import axios from 'axios';
 import styles from './CreateActivity.module.css';
@@ -27,13 +27,15 @@ function validate (data, countryId) {
 
 export default function CreateActivity(){
 
-    const countries = useSelector(s => s.countries);
+    const countries = useSelector(s => s.filteredCountries);
     const dispatch = useDispatch();
 
     const [errors, setErrors] = useState({});
     const [countryId, setCountryId] = useState([]);
+    const [order, setOrder] = useState('');
 
     useEffect(() => {
+        // dispatch(orderCountriesAlphAZ());
         dispatch(getCountries());
     }, [dispatch]); 
 
@@ -44,6 +46,11 @@ export default function CreateActivity(){
         season: ''
     });
 
+    function handleClick(){
+        dispatch(orderCountriesAlphAZ());
+        setOrder('Ordered');
+    }
+
     function handleChange(e) {
         if (e.target.name === 'countryId') {
             setCountryId([...countryId, e.target.value]);
@@ -51,7 +58,6 @@ export default function CreateActivity(){
             setActivityPost({
                 ...activityPost, 
                 [e.target.name]: e.target.value});
-            console.log(activityPost)
         }
         setErrors(validate({
             ...activityPost,
@@ -59,34 +65,22 @@ export default function CreateActivity(){
         }, countryId));
     }
 
-    // function handleCheck(e) {
-    //     if (e.target.checked) {
-    //         setActivityPost({
-    //             ...activityPost,
-    //             season: e.target.checked
-    //         })
-    //     }
-    //     console.log(activityPost.season);
-    // }
-
-    // function handleSelect(e) {
-    //     setActivityPost({
-    //         ...activityPost,
-    //         difficulty: e.target.value
-    //     });
-    // };
-
     async function handleSubmit (e) {
         e.preventDefault();
-        const post = await axios.post('http://localhost:3001/activity', activityPost)
-        alert('Your activity was created');
-        setActivityPost({
-            name: '',
-            difficulty: '',
-            duration: '',
-            season: ''
-        })
-        setCountryId([]);
+        const completedActivity = {...activityPost, countryId: countryId};
+        if (!Object.keys(errors).length) {
+            const post = await axios.post('http://localhost:3001/activity', completedActivity)
+            alert('Your activity was created');
+            setActivityPost({
+                name: '',
+                difficulty: '',
+                duration: '',
+                season: ''
+            })
+            setCountryId([]);
+        } else {
+            alert('Your activity is missing fields.')
+        }
     }
 
     function handleDelete(c) {
@@ -101,7 +95,7 @@ export default function CreateActivity(){
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                 <label>Country: </label>
-                    <select name="countryId" onChange={e => handleChange(e)}>
+                    <select name="countryId" onChange={e => handleChange(e)} onClick={handleClick}>
                         <option>- Select Country -</option>
                         {countries.map(c => (<option key={c.id} value={c.id}>{c.name}</option>))}
                     </select>
