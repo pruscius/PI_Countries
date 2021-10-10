@@ -17,7 +17,6 @@ router.post('/', async (req, res) => {
     const { name, difficulty, duration, countryId } = req.body;
     let { seasons } = req.body;
     seasons = seasons.join(', ')
-    console.log(seasons);
     try {
         const activity = await Activity.findOrCreate({
             where: {
@@ -36,10 +35,10 @@ router.post('/', async (req, res) => {
             });
             await activity[0].addCountry(country);
         }
-        res.send('Activity added successfully');
+        res.json('Activity added successfully.');
     }catch(e) {
         console.log(e)
-        res.status(500).send('Server error.')
+        res.status(500).json('Server error.')
     }
 })
 

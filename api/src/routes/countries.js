@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
             const countries = await Country.findAll({
                 include: Activity
             });
+            // console.log(countries);
             res.send(countries.length > 0 ? countries : 'No countries found.');
         } catch(e){
             res.status(500).send('Server error.')
