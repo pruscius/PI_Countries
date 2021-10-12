@@ -1,10 +1,4 @@
-.navBar {
-    display:flex;
-    justify-content: space-around;
-    background-color: #FFC300;
-}
-
-.homeButton {
+.button {
     background: #000306;
     background-image: -webkit-linear-gradient(top, #000306, #181C22);
     background-image: -moz-linear-gradient(top, #000306, #181C22);
@@ -26,14 +20,4 @@
     text-align: center;
     margin-top: 6px;
     font-weight: bold;
-}
-
-.aboutLink {
-    text-decoration: none;
-}
-
-.about {
-    text-decoration: none;
-    color: black;
-    font-weight:bold
 }

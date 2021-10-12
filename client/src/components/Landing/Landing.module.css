@@ -8,3 +8,52 @@
     left: 0;
     right: 0
   }
+
+  .buttonDiv {
+    display: flex;
+    justify-content: center;
+    margin: 70px;
+    margin-top: 90px;
+    margin-left: 100px
+  }
+
+  .button {
+    background: #000306;
+    background-image: -webkit-linear-gradient(top, #000306, #181C22);
+    background-image: -moz-linear-gradient(top, #000306, #181C22);
+    background-image: -ms-linear-gradient(top, #000306, #181C22);
+    background-image: -o-linear-gradient(top, #000306, #181C22);
+    background-image: -webkit-gradient(to bottom, #000306, #181C22);
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 40px;
+    font-weight: 100;
+    padding: 25px;
+    -webkit-box-shadow: 1px 1px 20px 0 #000000;
+    -moz-box-shadow: 1px 1px 20px 0 #000000;
+    box-shadow: 1px 1px 20px 0 #000000; 
+    text-shadow: 1px 1px 20px #000000;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center
+}
+
+.button:hover {
+  text-decoration: none;background-color: #97032D
+}
+
+.divText {
+  display:flex;
+  justify-content: center;  
+}
+
+.text {
+  font-family: Helvetica;
+  font-size: 200px;
+  color: #F9D223;
+  margin-bottom: 50px
+}

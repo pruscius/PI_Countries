@@ -1,4 +1,18 @@
-.input {
+.form {
     display: flex;
     justify-content: center;
+    padding: 1px;
+    height: 25px;
+    margin-top: 10px
+}
+
+.input {
+    border-radius: 4px
+}
+
+.searchBtn {
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    font-weight: bold
 }

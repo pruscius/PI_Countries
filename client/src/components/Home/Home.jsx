@@ -43,12 +43,12 @@ export default function Home () {
     }
     
     return (
-        <div>
+        <div className={styles.body}>
             <NavBar />
             <div className={styles.selects}>
                 <div className={styles.filter}>
-                    <h4>Filter By:</h4>
-                    <p>Continent: </p>
+                    <h4 className={styles.texts} >FILTER BY:</h4>
+                    <p className={styles.texts} >Continent: </p>
                     <select onChange={(e) => { handleFilterContinent(e) }}>
                         <option value="All">All</option>
                         <option value="Africa">Africa</option>
@@ -60,7 +60,7 @@ export default function Home () {
                         <option value="Oceania">Oceania</option>
                         <option value="Polar">Polar</option>                        
                     </select>
-                    <p>Activity</p>
+                    <p className={styles.texts}>Activity: </p>
                     <select onChange={e => handleFilterActivity(e)}>
                         <option value="All">All</option>
                         {  
@@ -73,9 +73,9 @@ export default function Home () {
                 <OrderAlph order={order} setOrder={setOrder} />
                 <OrderPop  order={order} setOrder={setOrder}/>
                 <div>
-                    <button onClick={handleRefreshClick}>Refresh Countries</button>
+                    <button className={styles.button} onClick={handleRefreshClick}>Refresh Countries</button>
                     <Link to="/postActivity">
-                        <button>Create Activity</button>
+                        <button className={styles.button}>Create Activity</button>
                     </Link>
                 </div>
             </div>
@@ -84,12 +84,13 @@ export default function Home () {
                     countriesPerPage={countriesPerPage}
                     countries={countries.length}
                     pagination={pagination}
+
                 />
             </div>           
             <div>
                 {
                     currentCountries === "No country" ? 
-                    <p>No country found</p> :
+                    <p className={styles.texts} >No country found</p> :
                     currentCountries.map(c=> (
                         <Country 
                         id={c.id}

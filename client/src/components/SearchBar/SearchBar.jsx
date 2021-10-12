@@ -21,15 +21,16 @@ export default function SearchBar () {
     };
 
     return (
-        <form onSubmit={handleSubmit} className={styles.input}>
+        <form onSubmit={handleSubmit} className={styles.form}>
                 <input 
                     name="countryName" 
                     type="text" 
                     placeholder="Search countries..."
                     value={name}
                     onChange={handleChange}
+                    className={styles.input}
                 />
-                <input type="submit" value="Search" />
+                <input type="submit" value="Search" className={styles.searchBtn}/>
             </form>
     )
 }

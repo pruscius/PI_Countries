@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 
 export default function Landing () {
     return (
-        <Link to="/home">
-            <div className={styles.landing}>
-              <button>Home</button>
+        <div className={styles.landing}>
+            <div className={styles.buttonDiv}>
+                <Link to="/home">
+                    <button className={styles.button}>ENTER</button>
+                </Link>
             </div>
-        </Link>
+            <div className={styles.divText}>
+                <h1 className={styles.text}>COUNTRIES</h1>
+            </div>
+        </div>
+
+
     )
 }

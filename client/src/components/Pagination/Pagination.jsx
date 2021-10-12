@@ -11,12 +11,12 @@ export default function Pagination ({ countries, countriesPerPage, pagination}) 
     }
 
     return (
-        <nav>
+        <nav className={styles.nav}>
             <ul className={styles.ul}>
                  {/*acá creo los anchors de los números de las páginas (alrededor de 24/25)*/}
                 { pageNumbers?.map(n => (
                     <li key={n} className={styles.list}>
-                       <button onClick={() => pagination(n)}>{n}</button>    
+                       <button className={styles.pagBtn} onClick={() => pagination(n)}>{n}</button>    
                     </li>
                 ))}
             </ul>

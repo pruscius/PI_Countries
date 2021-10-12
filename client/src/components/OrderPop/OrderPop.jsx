@@ -1,6 +1,7 @@
 import React from 'react';
 import { orderCountriesPopAsc, orderCountriesPopDesc } from '../../actions/actions';
 import { useDispatch } from 'react-redux';
+import styles from './OrderPop.module.css';
 
 export default function OrderPop({ order, setOrder }) {
 
@@ -19,8 +20,8 @@ export default function OrderPop({ order, setOrder }) {
     
     return (
         <div>
-            <button name="popAsc" onClick={e => handleClick (e)}>Highest Population</button>
-            <button name="popDesc" onClick={handleClick}>Lowest Population</button>
+            <button className={styles.button} name="popAsc" onClick={e => handleClick (e)}>Highest Population</button>
+            <button className={styles.button} name="popDesc" onClick={handleClick}>Lowest Population</button>
         </div>
     )
 }

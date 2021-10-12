@@ -99,7 +99,7 @@ export default function CreateActivity(){
     }
 
     return (
-        <div>
+        <div className={styles.body}>
             <NavBar />
             <h1>Create your own Activity</h1>
 
@@ -205,7 +205,7 @@ export default function CreateActivity(){
                     }
                 </div>
 
-                <button type="submit">Create Activity</button>
+                <button className={styles.btn} type="submit">Create Activity</button>
             </form>
             {
                 countryId.map(c => 

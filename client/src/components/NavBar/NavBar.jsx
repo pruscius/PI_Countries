@@ -1,17 +1,17 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import { Link } from 'react-router-dom';
-
+import styles from './NavBar.module.css';
 
 export default function NavBar () {
     return (
-        <nav>
-            <SearchBar />
+        <nav className={styles.navBar}>
             <Link to="/home">
-                <button>Home</button>
+                <button className={styles.homeButton}>Home</button>
             </Link>
-            <Link to="/about">
-                <p>About</p>
+            <SearchBar />
+            <Link to="/about" className={styles.aboutLink}>
+                <p className={styles.about}>About</p>
             </Link>
         </nav>
     )
