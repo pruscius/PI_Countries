@@ -61,7 +61,6 @@ router.delete('/', async (req, res) => {
         const deletes = await Activity.destroy({
             where: {}
         });
-        console.log('HOLAAAAAAAAAAAAAAAAAAAA')
         res.send('All the activities have been deleted');
     } catch(e){
         res.status(500).send('Server error.')

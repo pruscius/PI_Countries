@@ -10,6 +10,6 @@ describe('Landing Component', () =>
     it('should render a button with the text home', () => {
         const wrapper = shallow(<Landing />);
         const button = wrapper.find('button');
-        expect(button.text()).toBe('Home');
+        expect(button.text()).toBe('ENTER');
     })
 )
