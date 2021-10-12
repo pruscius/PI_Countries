@@ -31,6 +31,7 @@ export default function Home () {
     }, [dispatch]);
     
     function handleRefreshClick(){
+        setCurrentPage(1);
         dispatch(getCountries());
     };
     
@@ -46,8 +47,18 @@ export default function Home () {
         <div className={styles.body}>
             <NavBar />
             <div className={styles.selects}>
-                <div className={styles.filter}>
-                    <h4 className={styles.texts} >FILTER BY:</h4>
+                <div className={styles.buttons}>
+                    <OrderAlph order={order} setOrder={setOrder} />
+                    <OrderPop  order={order} setOrder={setOrder}/>
+                    <div>
+                        <button className={styles.button} onClick={handleRefreshClick}>Refresh Countries</button>
+                        <Link to="/postActivity">
+                            <button className={styles.button}>Create Activity</button>
+                        </Link>
+                    </div>
+                </div>
+                <div className={styles.filters}>
+                    <h4 className={styles.texts} >FILTER BY: </h4>
                     <p className={styles.texts} >Continent: </p>
                     <select onChange={(e) => { handleFilterContinent(e) }}>
                         <option value="All">All</option>
@@ -70,14 +81,6 @@ export default function Home () {
                         }
                     </select>
                 </div>
-                <OrderAlph order={order} setOrder={setOrder} />
-                <OrderPop  order={order} setOrder={setOrder}/>
-                <div>
-                    <button className={styles.button} onClick={handleRefreshClick}>Refresh Countries</button>
-                    <Link to="/postActivity">
-                        <button className={styles.button}>Create Activity</button>
-                    </Link>
-                </div>
             </div>
             <div>
                 <Pagination 
@@ -87,7 +90,7 @@ export default function Home () {
 
                 />
             </div>           
-            <div>
+            <div className={styles.countries}>
                 {
                     currentCountries === "No country" ? 
                     <p className={styles.texts} >No country found</p> :
@@ -102,13 +105,6 @@ export default function Home () {
                     ))
                 }
             </div>
-            <div>
-                <Pagination 
-                    countriesPerPage={countriesPerPage}
-                    countries={countries.length}
-                    pagination={pagination}
-                />
-            </div>             
         </div>
     )
 }

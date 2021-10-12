@@ -101,11 +101,11 @@ export default function CreateActivity(){
     return (
         <div className={styles.body}>
             <NavBar />
-            <h1>Create your own Activity</h1>
+            <h1 className={styles.createAct}>CREATE YOUR OWN ACTIVITY</h1>
 
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                <label>Country: </label>
+            <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
+                <div className={styles.fields}>
+                <label className={styles.labels}>Country: </label>
                     <select name="countryId" onChange={e => handleChange(e)} onClick={handleClick}>
                         <option>- Select Country -</option>
                         {countries.map(c => (<option key={c.id} value={c.id}>{c.name}</option>))}
@@ -116,8 +116,8 @@ export default function CreateActivity(){
                         )
                     }
                 </div>
-                <div>
-                    <label>Name: </label>
+                <div className={styles.fields}>
+                    <label className={styles.labels}>Name: </label>
                     <input 
                         type="text"
                         value={activityPost.name}
@@ -130,8 +130,8 @@ export default function CreateActivity(){
                         )
                     }
                 </div>
-                <div>
-                    <label>Difficulty: </label>
+                <div className={styles.fields}>
+                    <label className={styles.labels}>Difficulty: </label>
                     <select name="difficulty" value={activityPost.difficulty} onChange={e => handleChange(e)}>
                         <option>- Set Difficulty -</option>
                         <option value="1">1</option>
@@ -146,8 +146,8 @@ export default function CreateActivity(){
                         )
                     }
                 </div>
-                <div>
-                    <label>Duration (in hours): </label>
+                <div className={styles.fields}>
+                    <label className={styles.labels}>Duration (in hours): </label>
                     <input
                         type="text"    
                         value={activityPost.duration}
@@ -160,8 +160,8 @@ export default function CreateActivity(){
                         )
                     }
                 </div>
-                <div>
-                    <label>Seasons: </label>
+                <div className={styles.fields}>
+                    <label className={styles.labels}>Seasons: </label>
                     <label>
                         <input
                             type="checkbox"
@@ -209,9 +209,9 @@ export default function CreateActivity(){
             </form>
             {
                 countryId.map(c => 
-                    <div>
+                    <div className={styles.idCountry}>
                         <p>{c}</p>
-                        <button onClick={() => handleDelete(c)}>X</button>
+                        <button className={styles.idButton} onClick={() => handleDelete(c)}>X</button>
                     </div>
                     )
             }

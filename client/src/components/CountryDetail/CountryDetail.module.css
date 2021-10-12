@@ -6,18 +6,11 @@
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0
+    right: 0;
 }
 
 .btn {
     background: #000306;
-    background-image: -webkit-linear-gradient(top, #000306, #181C22);
-    background-image: -moz-linear-gradient(top, #000306, #181C22);
-    background-image: -ms-linear-gradient(top, #000306, #181C22);
-    background-image: -o-linear-gradient(top, #000306, #181C22);
-    background-image: -webkit-gradient(to bottom, #000306, #181C22);
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
     border-radius: 9px;
     color: #FFFFFF;
     font-family: Helvetica;
@@ -31,7 +24,7 @@
     text-align: center;
     margin-top: 6px;
     font-weight: bold;
-    margin-bottom: 10px
+    margin: 20px
 }
 
 .card {
@@ -42,7 +35,9 @@
         flex-direction: column;
         align-items: center;
         background-color: black;
-        color: white
+        color: white;
+        margin-top: 30px
+        
 }
 
 .flag {
@@ -51,5 +46,13 @@
 }
 
 .p {
-    margin: 1px
+    margin: 2px;
+    align-self: flex-start;
+    
+}
+
+.outerCard {
+    display:flex;
+    align-items: center;
+    justify-content: center
 }

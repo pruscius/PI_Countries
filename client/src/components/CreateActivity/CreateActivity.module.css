@@ -15,15 +15,33 @@
     color: white
 }
 
+.createAct {
+    background: #FFC300;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: white;
+    color: black;
+    box-sizing: border-box;
+    width: 461px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;    
+}
+
+.fields {
+    margin-top: 20px
+}
+
+.labels {
+    margin-right: 7px;    
+    border-radius: 4px;
+    font-weight: bold;    
+}
+
 .btn {
     background: #FFC300;
-    background-image: -webkit-linear-gradient(top, #000306, #181C22);
-    background-image: -moz-linear-gradient(top, #000306, #181C22);
-    background-image: -ms-linear-gradient(top, #000306, #181C22);
-    background-image: -o-linear-gradient(top, #000306, #181C22);
-    background-image: -webkit-gradient(to bottom, #000306, #181C22);
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
     border-radius: 9px;
     color: #FFFFFF;
     font-family: Helvetica;
@@ -36,7 +54,39 @@
     display: inline-block;
     cursor: pointer;
     text-align: center;
-    margin-top: 6px;
+    margin-top: 22px;
+    margin-left: 22px; 
     font-weight: bold;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    width: 130px
+}
+
+.idCountry {
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end
+}
+
+.idButton {
+    background: #FFC300;
+    border-radius: 9px;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 100;
+    color: black;
+    padding:5px;
+    text-shadow: 1px 1px 20px #000000;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 22px;
+    margin-left: 22px; 
+    font-weight: bold;
+    margin-bottom: 10px;
 }

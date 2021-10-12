@@ -16,12 +16,13 @@ export default function CountryDetail () {
     return (
         <div className={styles.body}>
             <Link to="/home">
-                <button className={styles.btn}>Home</button>
+                <button className={styles.btn}>Back</button>
             </Link>
+            <div className={styles.outerCard}>
             {
                 country ?
                 <div key={country.id} className={styles.card}>
-                    <h1>{country.name.toUpperCase()}</h1>
+                    <h1>{country.name}</h1>
                     <a href={country.flag}>
                     <img src={country.flag}alt="Not found" className={styles.flag}/>
                     </a>
@@ -39,6 +40,7 @@ export default function CountryDetail () {
                 </div> : 
                 <h3>Error 404 Not Found</h3>
             }
+            </div>
         </div>
     )
 }
