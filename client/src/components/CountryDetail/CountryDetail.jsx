@@ -19,8 +19,8 @@ export default function CountryDetail () {
                 <button className={styles.btn}>Back</button>
             </Link>
             <div className={styles.outerCard}>
-            {
-                country ?
+            {   
+                typeof country === 'object' ?
                 <div key={country.id} className={styles.card}>
                     <h1>{country.name}</h1>
                     <a href={country.flag}>
@@ -31,10 +31,12 @@ export default function CountryDetail () {
                     <p className={styles.p}>Capital: {country.capital}</p>
                     <p className={styles.p}>Sub-region: {country.subregion}</p>
                     <p className={styles.p}>Area: {country.area} kms2</p>
-                    <p className={styles.p}>Activities: </p>
                     {
                         country.activities?.map(a => (
-                            <p className={styles.p}>{a.name} in {a.seasons}</p>
+                            <>
+                                <p className={styles.p}>Activities: </p>
+                                <p className={styles.p}>{a.name} in {a.seasons}</p>
+                            </>
                         ))
                     }
                 </div> : 

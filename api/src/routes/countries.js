@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
                         [Op.iLike]: `%${name}%`
                     }
                 },
-                include: Activity
+                // include: Activity
             });
             res.send(country.length > 0 ? country : 'No country found.');
         } catch(e) {
@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
         })
         res.send(country ? country : 'No country found.');
     } catch (e) {
-        res.status(500).send('Server error.')
+        res.status(500).json('Server error.')
     }
 })
 

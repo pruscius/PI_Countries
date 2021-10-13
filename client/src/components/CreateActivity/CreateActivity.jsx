@@ -16,7 +16,7 @@ function validate (data, countryId) {
     if (!data.duration) { // regexp para float?
         errors.duration = 'Your activity must have a duration set in hours (only dots and numbers)';
     } 
-    if(!data.seasons.length) { // ENUM no es taxativo? o se puede mas de uno?
+    if(!data.seasons.length) { 
         errors.seasons = 'You must set at least one season for your activity';
     } 
     if (!countryId.length) {
@@ -27,7 +27,7 @@ function validate (data, countryId) {
 
 export default function CreateActivity(){
 
-    const countries = useSelector(s => s.filteredCountries);
+    const countries = useSelector(s => s.countries);
     const dispatch = useDispatch();
 
     const [errors, setErrors] = useState({});
@@ -45,6 +45,7 @@ export default function CreateActivity(){
         seasons: []
     });
 
+    // Esta función me ordena los países que están en el select, una vez que le hago click.
     function handleClick(){
         dispatch(orderCountriesAlphAZ());
         setOrder('Ordered');
@@ -54,12 +55,12 @@ export default function CreateActivity(){
         if (e.target.name === 'countryId') {
             setCountryId([...countryId, e.target.value]);
         } else if (e.target.name === 'seasons') {
-            if (e.target.checked){
+            if (e.target.checked) {
                 setActivityPost({
                     ...activityPost,
                     seasons: activityPost.seasons.concat(e.target.value)
                 }) 
-            } else if(!e.target.checked) {
+            } else if (!e.target.checked) {
                 activityPost.seasons && setActivityPost({
                     ...activityPost,
                     seasons: activityPost.seasons.filter(s => s !== e.target.value)
@@ -67,8 +68,9 @@ export default function CreateActivity(){
             }
         } else {
             setActivityPost({
-            ...activityPost, 
-            [e.target.name]: e.target.value});
+                ...activityPost, 
+                [e.target.name]: e.target.value
+            });
         }
         setErrors(validate({
             ...activityPost,
@@ -76,6 +78,8 @@ export default function CreateActivity(){
         }, countryId));
     }
 
+
+    // Hice el axios acá porque en las actions no me funcionaba, no sé por qué.
     async function handleSubmit (e) {
         e.preventDefault();
         const completedActivity = {...activityPost, countryId: countryId};
@@ -87,14 +91,14 @@ export default function CreateActivity(){
                 difficulty: '',
                 duration: '',
                 seasons: ''
-            })
+            });
             setCountryId([]);
         } else {
             alert('Your activity is missing fields.')
         }
     }
 
-    function handleDelete(c) {
+    function handleDeleteClick(c) {
         setCountryId(countryId.filter(cR => cR !== c))
     }
 
@@ -205,13 +209,13 @@ export default function CreateActivity(){
                     }
                 </div>
 
-                <button className={styles.btn} type="submit">Create Activity</button>
+                <input className={styles.btn} type="submit" value="Create Activity" />
             </form>
             {
                 countryId.map(c => 
                     <div className={styles.idCountry}>
                         <p>{c}</p>
-                        <button className={styles.idButton} onClick={() => handleDelete(c)}>X</button>
+                        <button className={styles.idButton} onClick={() => handleDeleteClick(c)}>X</button>
                     </div>
                     )
             }

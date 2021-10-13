@@ -17,28 +17,36 @@ router.post('/', async (req, res) => {
     const { name, difficulty, duration, countryId } = req.body;
     let { seasons } = req.body;
     seasons = seasons.join(', ')
-    try {
-        const activity = await Activity.findOrCreate({
-            where: {
-                name: name,
-                difficulty: difficulty,
-                duration: duration,
-                seasons: seasons
-            }
-        });
-
-        for (var i = 0; i < countryId.length; i++) {
-            const country = await Country.findOne({
+    if ( name && difficulty && duration && countryId && seasons) {
+        try {
+            const activity = await Activity.findOrCreate({
                 where: {
-                    id: countryId[i]
+                    name: name,
+                    difficulty: difficulty,
+                    duration: duration,
+                    seasons: seasons
                 }
             });
-            await activity[0].addCountry(country);
+            
+            // Por cada countryId que recibo, busco el país que lo tiene, y creo el registro en la tabla
+            // relacional
+            for (var i = 0; i < countryId.length; i++) {
+                const country = await Country.findOne({
+                    where: {
+                        id: countryId[i]
+                    }
+                });
+                await activity[0].addCountry(country);
+                // activity es un array. El primer elemento es un objeto llamado activity, que tiene los 
+                // valores es a ese objeto que le agregamos el país para la tabla relacional.
+            }
+            res.json('Activity added successfully.');
+        }catch(e) {
+            console.log(e)
+            res.status(500).json('Server error.')
         }
-        res.json('Activity added successfully.');
-    }catch(e) {
-        console.log(e)
-        res.status(500).json('Server error.')
+    } else {
+        res.status(500).json('Your activity couldnt be created');
     }
 })
 

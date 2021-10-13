@@ -9,8 +9,8 @@ Enzyme.configure({adapter: new Adapter() });
 describe('About Component', () =>
     it('should render a p', () => {
         const wrapper = shallow(<About />);
-        const p = wrapper.find('p');
+        const about = wrapper.find('h2');
         // console.log(p.text());
-        expect(p.text()).toBe('This is an individual project developed by Andrés Frank, for the puropse of evaluation from the teaching instructors at Henry School of Web Development.');
+        expect(about.text()).toBe('About');
     })
 )

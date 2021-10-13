@@ -14,6 +14,9 @@ function App() {
         <Route exact path="/about" component={About}/>
         <Route exact path="/postActivity" component={CreateActivity} />
         <Route path="/countries/:id" component={CountryDetail}/>
+        <Route path="/">
+          <h1>404 Not Found</h1>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

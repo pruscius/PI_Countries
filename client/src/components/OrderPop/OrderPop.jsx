@@ -3,7 +3,7 @@ import { orderCountriesPopAsc, orderCountriesPopDesc } from '../../actions/actio
 import { useDispatch } from 'react-redux';
 import styles from './OrderPop.module.css';
 
-export default function OrderPop({ order, setOrder }) {
+export default function OrderPop({ setOrder }) {
 
     const dispatch = useDispatch();
     

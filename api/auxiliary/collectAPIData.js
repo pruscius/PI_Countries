@@ -24,15 +24,8 @@ const getData = async () => {
         console.log(e);
     }
 }
+
 // invoco la función para obtener los datos de la API.
 getData();
 
-// redux-thunk
-// react-router-dom
-// react-redux redux
-// Axios
-// redux-devtools-extension
-
-//set client_encoding to 'utf8'
-
-// https://restcountries.com/v2/all
+//set client_encoding to 'utf8' -- for postgres functioning

@@ -39,6 +39,7 @@ const rootReducer = (state = initialState, action) => {
                 filterByActivity = countryActivities;
             } else {
                 filterByActivity = countryActivities.filter(c => {
+                    // Reviso si el país tiene la actividad, y si la tiene lo filtro, sino no.
                    let act = c.activities.find(a => a.name === action.payload);
                    if (act) return c;
                 })
@@ -48,6 +49,10 @@ const rootReducer = (state = initialState, action) => {
                 filteredCountries: filterByActivity
             };
         // country : {a: a, activities: [{id: 1, name: Surfing}]}
+
+        // Los orders lo que hacen es ordenar el estado actual de filteredCountries, que puede ser todos los
+        // países o los países filtrados por continente o actividad.
+        // Recibe un función comparadora por parámetro que determina la lógica a seguir. 
         case "ORDER_COUNTRIES_ALPH_AZ":
         let orderedCountries = state.filteredCountries;
             orderedCountries.sort(function(a, b) {
@@ -78,32 +83,17 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 filteredCountries: orderedCountries1
             }; 
+            // Al ordenar por números, se puede condensar la función a lo que está escrito. Con strings NO.
         case "ORDER_COUNTRIES_POP_ASC":
             let orderedCountries2 = state.filteredCountries;
-            orderedCountries2.sort(function(a, b) {
-                if (a.population > b.population) {
-                    return -1;
-                }
-                if (a.population < b.population) {
-                    return 1;
-                }
-                return 0;
-            });
+            orderedCountries2.sort((a, b) => b.population - a.population)
             return {
                 ...state,
                 filteredCountries: orderedCountries2
             };
         case "ORDER_COUNTRIES_POP_DESC":
             let orderedCountries3 = state.filteredCountries;
-            orderedCountries3.sort(function(a, b) {
-                if (a.population > b.population) {
-                    return 1;
-                }
-                if (a.population < b.population) {
-                    return -1;
-                }
-                return 0;
-            });
+            orderedCountries3.sort((a, b) => a.population - b.population)
         return {
             ...state,
             filteredCountries: orderedCountries3
@@ -113,8 +103,6 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 filteredCountries: action.payload
             };
-        case "POST_ACTIVITY":
-            return {...state};
         case "GET_DETAILS":
             return {
                 ...state,

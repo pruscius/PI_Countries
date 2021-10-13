@@ -47,7 +47,6 @@ describe('Countries routes', () => {
     it('should respond with the countries that contain the name sent by query as a name substring', () => {
       return agent.get('/countries?name=Bra')
         .then(res => {
-          console.log(res.body[0].id)
           expect(res.status).to.equal(200)
           expect(res.body.length).to.equal(2)
           expect(res.body[0].id).to.equal('BRA')

@@ -1,9 +1,9 @@
 import React from 'react';
-import { orderCountriesAlphAZ, orderCountriesAlphZA } from '../../actions/actions';
+import { orderCountriesAlphAZ, orderCountriesAlphZA } from '../../actions/actions.js';
 import { useDispatch } from 'react-redux';
 import styles from './OrderAlph.module.css';
 
-export default function OrderAlph({ order, setOrder }) {
+export default function OrderAlph({ setOrder }) {
 
     const dispatch = useDispatch();
     
@@ -20,7 +20,7 @@ export default function OrderAlph({ order, setOrder }) {
     
     return (
         <div>
-            <button className={styles.button} name="AZ" onClick={e => handleClick (e)}>A-Z</button>
+            <button className={styles.button} name="AZ" onClick={handleClick}>A-Z</button>
             <button className={styles.button} name="ZA" onClick={handleClick}>Z-A</button>
         </div>
     )

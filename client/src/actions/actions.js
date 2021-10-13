@@ -92,19 +92,6 @@ export function getCountryName(payload) {
     }
 }
 
-export function postActivity(payload) {
-    return async function (dispatch) {
-        try {
-            const response = await axios.post('http://localhost:3001/activity', payload);
-            console.log(response)
-            return {
-                response
-            }
-        }catch(e){
-            console.log(e);
-        }
-    }
-}
 
 export function getDetail(id){
     return async function (dispatch) {
@@ -119,3 +106,17 @@ export function getDetail(id){
         }
     }
 }
+
+// export function postActivity(payload) {
+//     return async function (dispatch) {
+//         try {
+//             const response = await axios.post('http://localhost:3001/activity', payload);
+//             console.log(response)
+//             return {
+//                 response
+//             }
+//         }catch(e){
+//             console.log(e);
+//         }
+//     }
+// }

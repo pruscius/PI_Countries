@@ -16,7 +16,6 @@ describe('Activity routes', () => {
         it('should respond with 200', () => {
             return agent.get('/activity')
                 .then(res => {
-                    console.log(res.body)
                     expect(res.status).to.equal(200)
                 })
         })

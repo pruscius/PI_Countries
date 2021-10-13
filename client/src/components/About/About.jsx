@@ -9,7 +9,7 @@ export default function About(){
                 <button className={styles.btn}>Home</button>
             </Link>
             <h2 className={styles.about}>About</h2>
-            <p className={styles.text}> This is an individual project developed by Andrés Frank, for the puropse of evaluation 
+            <p className={styles.text}>This is an individual project developed by Andrés Frank, for the puropse of evaluation 
                 from the teaching instructors at Henry School of Web Development.
             </p>
         </div>
