@@ -104,6 +104,7 @@ router.get('/', async (req, res) => {
                     });
                     res.send(countries.length > 0 ? countries : 'No countries found.');
                 })
+                .catch(err => console.log(err))
         } catch (e) {
             res.status(500).send('Server error.')
         }
