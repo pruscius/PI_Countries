@@ -39,8 +39,41 @@ const getData = async () => {
     }
 }
 
+//Precargado de datos
+async function dataBase(req, res, next) {
+    try {
+        const countries = await Country.findAll(); // Busco los paises en la DB
 
-router.get('/', async (req, res) => {
+        if (!countries.length) {
+            // Hago la peticion a la API, recorro todo lo que me trae y voy creando paises con las condiciones 
+            // requeridas.
+            let countriesDB = await axios.get('https://restcountries.com/v2/all');
+            countriesDB = countriesDB.data.map(c => {
+                return Country.create(
+                    {
+                        id: c.alpha3Code,
+                        name: c.name,
+                        flag: c.flag,
+                        region: c.region,
+                        capital: c.capital,
+                        subregion: c.subregion,
+                        area: c.area,
+                        population: c.population
+                    })
+            })
+            // Una vez que se cumplieron todas las promesas de la DB, que continúe
+            Promise.all(countriesDB)
+                .then(response => next())
+        } else {  // Si ya estan los datos en la DB que continúe.
+            return next();
+        }
+    } catch (err) {
+        next(err)
+    }
+}
+
+
+router.get('/', getData, async (req, res) => {
     const { name, order, filter } = req.query;
     console.log(order, filter)
     if (order && filter) {
@@ -97,19 +130,19 @@ router.get('/', async (req, res) => {
 
     } else {
         try {
-            const countries = await Country.findAll({
-                include: Activity
-            });
-            res.send(countries.length > 0 ? countries : 'No countries found.');
+            // const countries = await Country.findAll({
+            //     include: Activity
+            // });
+            // res.send(countries.length > 0 ? countries : 'No countries found.');
 
-            // getData()
-            //     .then(() => {
-            //         const countries = await Country.findAll({
-            //             include: Activity
-            //         });
-            //         res.send(countries.length > 0 ? countries : 'No countries found.');
-            //     })
-            //     .catch(err => console.log(err))
+            getData()
+                .then(() => {
+                    const countries = await Country.findAll({
+                        include: Activity
+                    });
+                    res.send(countries.length > 0 ? countries : 'No countries found.');
+                })
+                .catch(err => console.log(err))
         } catch (e) {
             res.status(500).send('Server error.')
         }
