@@ -84,7 +84,7 @@ export default function CreateActivity(){
         e.preventDefault();
         const completedActivity = {...activityPost, countryId: countryId};
         if (!Object.keys(errors).length) {
-            const post = await axios.post('http://localhost:3001/activity', completedActivity)
+            const post = await axios.post('/activity', completedActivity)
             alert('Your activity was created');
             setActivityPost({
                 name: '',

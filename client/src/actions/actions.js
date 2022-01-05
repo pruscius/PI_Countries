@@ -16,7 +16,7 @@ const GET_NEW_COUNTRIES = "GET_NEW_COUNTRIES";
 
 export function getCountries() {
     return function (dispatch) {
-        return axios.get('http://localhost:3001/countries')
+        return axios.get('/countries')
             .then(res => {
                 console.log(res)
                 dispatch({
@@ -27,9 +27,9 @@ export function getCountries() {
     }
 }
 
-export function getCountriesAZ(params){
+export function getCountriesAZ(params) {
     return async function (dispatch) {
-        const countries = await axios.get(`http://localhost:3001/countries?order=${params.ascDesc}&filter=${params.regionFilter}`)
+        const countries = await axios.get(`/countries?order=${params.ascDesc}&filter=${params.regionFilter}`)
         dispatch({
             type: GET_NEW_COUNTRIES,
             payload: countries.data
@@ -51,9 +51,9 @@ export function getCountriesAZ(params){
 //     }
 // }
 
-export function getActivities () {
+export function getActivities() {
     return function (dispatch) {
-        return axios.get('http://localhost:3001/activity')
+        return axios.get('/activity')
             .then(res => {
                 dispatch({
                     type: GET_ACTIVITIES,
@@ -77,38 +77,38 @@ export function getActivities () {
 //     }
 // }
 
-export function filterByContinent (payload) {
+export function filterByContinent(payload) {
     return {
         type: FILTER_BY_CONTINENT,
         payload
     }
 }
 
-export function filterByActivity (payload) {
+export function filterByActivity(payload) {
     return {
-            type: FILTER_BY_ACTIVITY,
-            payload
+        type: FILTER_BY_ACTIVITY,
+        payload
     }
 }
-export function orderCountriesAlphAZ () {
+export function orderCountriesAlphAZ() {
     return {
         type: ORDER_COUNTRIES_ALPH_AZ
     }
 }
 
-export function orderCountriesAlphZA () {
+export function orderCountriesAlphZA() {
     return {
         type: ORDER_COUNTRIES_ALPH_ZA
     }
 }
 
-export function orderCountriesPopAsc () {
+export function orderCountriesPopAsc() {
     return {
         type: ORDER_COUNTRIES_POP_ASC
     }
 }
 
-export function orderCountriesPopDesc () {
+export function orderCountriesPopDesc() {
     return {
         type: ORDER_COUNTRIES_POP_DESC
     }
@@ -118,27 +118,27 @@ export function orderCountriesPopDesc () {
 export function getCountryName(payload) {
     return async function (dispatch) {
         try {
-            let countries = await axios.get(`http://localhost:3001/countries?name=${payload}`);
+            let countries = await axios.get(`/countries?name=${payload}`);
             dispatch({
                 type: GET_COUNTRY_NAME,
                 payload: countries.data
             })
-        }catch(e){
+        } catch (e) {
             console.log(e)
         }
     }
 }
 
 
-export function getDetail(id){
+export function getDetail(id) {
     return async function (dispatch) {
         try {
-            const country = await axios.get(`http://localhost:3001/countries/${id}`);
+            const country = await axios.get(`/countries/${id}`);
             dispatch({
                 type: GET_DETAILS,
                 payload: country.data
             });
-        }catch(e) {
+        } catch (e) {
             console.log(e);
         }
     }
