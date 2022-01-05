@@ -8,7 +8,6 @@ import NavBar from "../NavBar/NavBar.jsx";
 import OrderAlph from "../OrderAlph/OrderAlph.jsx";
 import OrderPop from "../OrderPop/OrderPop.jsx";
 import styles from './Home.module.css'; 
-import axios from "axios";
 
 export default function Home () {
     const countries = useSelector(s => s.filteredCountries);
@@ -42,7 +41,7 @@ export default function Home () {
         dispatch(getCountries());
         console.log(currentCountries);
         dispatch(getActivities());
-    }, [dispatch]);
+    }, [dispatch, currentCountries]);
     
     function handleRefreshClick(){
         setCurrentPage(1);
