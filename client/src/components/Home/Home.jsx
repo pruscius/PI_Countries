@@ -40,7 +40,7 @@ export default function Home () {
     useEffect(() => {
         dispatch(getCountries());
         dispatch(getActivities());
-    }, [dispatch, currentCountries]);
+    }, [dispatch]);
     
     function handleRefreshClick(){
         setCurrentPage(1);
