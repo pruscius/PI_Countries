@@ -97,14 +97,19 @@ router.get('/', async (req, res) => {
 
     } else {
         try {
-            getData()
-                .then(() => {
-                    const countries = await Country.findAll({
-                        include: Activity
-                    });
-                    res.send(countries.length > 0 ? countries : 'No countries found.');
-                })
-                .catch(err => console.log(err))
+            const countries = await Country.findAll({
+                include: Activity
+            });
+            res.send(countries.length > 0 ? countries : 'No countries found.');
+
+            // getData()
+            //     .then(() => {
+            //         const countries = await Country.findAll({
+            //             include: Activity
+            //         });
+            //         res.send(countries.length > 0 ? countries : 'No countries found.');
+            //     })
+            //     .catch(err => console.log(err))
         } catch (e) {
             res.status(500).send('Server error.')
         }
