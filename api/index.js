@@ -17,7 +17,6 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-require('dotenv').config();
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 
