@@ -18,7 +18,6 @@ export function getCountries() {
     return function (dispatch) {
         return axios.get('/countries')
             .then(res => {
-                console.log(res)
                 dispatch({
                     type: GET_COUNTRIES,
                     payload: res.data

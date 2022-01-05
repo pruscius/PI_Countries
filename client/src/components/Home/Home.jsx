@@ -39,7 +39,6 @@ export default function Home () {
     
     useEffect(() => {
         dispatch(getCountries());
-        console.log(currentCountries);
         dispatch(getActivities());
     }, [dispatch, currentCountries]);
     
@@ -67,7 +66,6 @@ export default function Home () {
 
     // handle para el submit de los order/filter del back
     function handleNewSubmit(e) {
-        console.log('hola')
         e.preventDefault();
         dispatch(getCountriesAZ({regionFilter: regionFilter, ascDesc: ascDesc}))
         setRegionFilter('');

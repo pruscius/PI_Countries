@@ -12,6 +12,33 @@ const router = Router();
 //         }).catch(e=>res.json(e));
 // })
 
+const getData = async () => {
+    try {
+        const data = await axios.get('https://restcountries.com/v2/all');
+        // .data devuelve la data del get
+        const json = data.data;
+        for (var i = 0; i < json.length; i++) {
+            const [country, created] = await Country.findOrCreate({
+                where: {
+                    name: json[i].name
+                },
+                defaults: {
+                    id: json[i].alpha3Code,
+                    name: json[i].name,
+                    flag: json[i].flag,
+                    region: json[i].region,
+                    capital: json[i].capital,
+                    subregion: json[i].subregion,
+                    area: json[i].area,
+                    population: json[i].population
+                }
+            })
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 
 router.get('/', async (req, res) => {
     const { name, order, filter } = req.query;
@@ -38,7 +65,7 @@ router.get('/', async (req, res) => {
                 // include: Activity
             });
             res.send(country.length > 0 ? country : 'No country found.');
-        } catch(e) {
+        } catch (e) {
             res.status(500).send('Server error.');
         }
     } else if (order === 'asc') {
@@ -64,17 +91,20 @@ router.get('/', async (req, res) => {
                 }
             })
             res.json(filteredCountries);
-        } catch(e) {
-            res.json (e)
-        } 
+        } catch (e) {
+            res.json(e)
+        }
 
     } else {
         try {
-            const countries = await Country.findAll({
-                include: Activity
-            });
-            res.send(countries.length > 0 ? countries : 'No countries found.');
-        } catch(e){
+            getData()
+                .then(() => {
+                    const countries = await Country.findAll({
+                        include: Activity
+                    });
+                    res.send(countries.length > 0 ? countries : 'No countries found.');
+                })
+        } catch (e) {
             res.status(500).send('Server error.')
         }
     }
@@ -88,9 +118,9 @@ router.get('/:id', async (req, res) => {
             include: [{
                 model: Activity,
                 through: {
-                  attributes: []
+                    attributes: []
                 }
-              }]
+            }]
         })
         res.send(country ? country : 'No country found.');
     } catch (e) {
