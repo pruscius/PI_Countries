@@ -5,6 +5,13 @@ const { Op } = require('sequelize');
 const router = Router();
 
 router.get('/', async (req, res) => {
+    // console.log('ola')
+    // Activity.findAll()
+    //     .then(res => {
+    //         console.log(res);
+    //     })
+    //     res.json('hola')
+    
     try {
         const activities = await Activity.findAll();
         res.json(activities);

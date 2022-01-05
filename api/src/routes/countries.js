@@ -5,9 +5,29 @@ const axios = require('axios');
 
 const router = Router();
 
+// router.get('/', (req, res) => {
+//     Country.findAll()
+//         .then(response=>{
+//             res.json(response)
+//         }).catch(e=>res.json(e));
+// })
+
+
 router.get('/', async (req, res) => {
-    const { name } = req.query;
-    if (name) {
+    const { name, order, filter } = req.query;
+    console.log(order, filter)
+    if (order && filter) {
+        console.log(order, filter);
+        const countries = await Country.findAll({
+            where: {
+                region: filter
+            },
+            order: [
+                ['name', order]
+            ]
+        });
+        res.json(countries);
+    } else if (name) {
         try {
             const country = await Country.findAll({
                 where: {
@@ -21,12 +41,38 @@ router.get('/', async (req, res) => {
         } catch(e) {
             res.status(500).send('Server error.');
         }
+    } else if (order === 'asc') {
+        const orderedCountries = await Country.findAll({
+            order: [
+                ['name', 'ASC'],
+                ['population', 'ASC']
+            ]
+        });
+        res.json(orderedCountries)
+    } else if (order === 'desc') {
+        const orderedCountries = await Country.findAll({
+            order: [
+                ['name', 'DESC']
+            ]
+        });
+        res.json(orderedCountries);
+    } else if (filter) {
+        try {
+            const filteredCountries = await Country.findAll({
+                where: {
+                    region: filter
+                }
+            })
+            res.json(filteredCountries);
+        } catch(e) {
+            res.json (e)
+        } 
+
     } else {
         try {
             const countries = await Country.findAll({
                 include: Activity
             });
-            // console.log(countries);
             res.send(countries.length > 0 ? countries : 'No countries found.');
         } catch(e){
             res.status(500).send('Server error.')

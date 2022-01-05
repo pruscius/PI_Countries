@@ -10,35 +10,72 @@ const ORDER_COUNTRIES_ALPH_AZ = "ORDER_COUNTRIES_ALPH_AZ";
 const ORDER_COUNTRIES_ALPH_ZA = "ORDER_COUNTRIES_ALPH_ZA";
 const ORDER_COUNTRIES_POP_ASC = "ORDER_COUNTRIES_POP_ASC";
 const ORDER_COUNTRIES_POP_DESC = "ORDER_COUNTRIES_POP_DESC";
+const GET_NEW_COUNTRIES = "GET_NEW_COUNTRIES";
 
 
-export function getCountries () {
-    return async function(dispatch) {
-        try{
-            let countries = await axios.get('http://localhost:3001/countries');
-            dispatch({
-                type: GET_COUNTRIES,
-                payload: countries.data
-            });
-        }catch(e){
-            console.log(e);
-        }
+
+export function getCountries() {
+    return function (dispatch) {
+        return axios.get('http://localhost:3001/countries')
+            .then(res => {
+                console.log(res)
+                dispatch({
+                    type: GET_COUNTRIES,
+                    payload: res.data
+                })
+            })
     }
 }
+
+export function getCountriesAZ(params){
+    return async function (dispatch) {
+        const countries = await axios.get(`http://localhost:3001/countries?order=${params.ascDesc}&filter=${params.regionFilter}`)
+        dispatch({
+            type: GET_NEW_COUNTRIES,
+            payload: countries.data
+        })
+    }
+
+}
+// export function getCountries () {
+//     return async function(dispatch) {
+//         try{
+//             let countries = await axios.get('http://localhost:3001/countries');
+//             dispatch({
+//                 type: GET_COUNTRIES,
+//                 payload: countries.data
+//             });
+//         }catch(e){
+//             console.log(e);
+//         }
+//     }
+// }
 
 export function getActivities () {
-    return async function(dispatch) {
-        try {
-            let activities = await axios.get('http://localhost:3001/activity');
-            dispatch({
-                type: GET_ACTIVITIES,
-                payload: activities.data
+    return function (dispatch) {
+        return axios.get('http://localhost:3001/activity')
+            .then(res => {
+                dispatch({
+                    type: GET_ACTIVITIES,
+                    payload: res.data
+                })
             })
-        } catch(e){
-            console.log(e);
-        }
     }
 }
+
+// export function getActivities () {
+//     return async function(dispatch) {
+//         try {
+//             let activities = await axios.get('http://localhost:3001/activity');
+//             dispatch({
+//                 type: GET_ACTIVITIES,
+//                 payload: activities.data
+//             })
+//         } catch(e){
+//             console.log(e);
+//         }
+//     }
+// }
 
 export function filterByContinent (payload) {
     return {

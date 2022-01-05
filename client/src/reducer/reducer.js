@@ -8,6 +8,11 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
+        case "GET_NEW_COUNTRIES":
+            return {
+                ...state,
+                filteredCountries: action.payload
+            }
         case "GET_COUNTRIES":
             return {
                 ...state,

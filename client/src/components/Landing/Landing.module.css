@@ -40,11 +40,11 @@
 .divText {
   display:flex;
   justify-content: center;  
+  margin-top: 50px;
 }
 
 .text {
   font-family: Helvetica;
-  font-size: 200px;
+  font-size: 150px;
   color: #F9D223;
-  margin-bottom: 50px
 }

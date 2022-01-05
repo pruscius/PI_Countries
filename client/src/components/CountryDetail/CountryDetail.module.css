@@ -1,6 +1,6 @@
 .body {
     background-color: #FFC300;
-    background-repeat: no-repeat;
+    overflow: auto;
     background-size: cover;
     position: absolute;
     top: 0;

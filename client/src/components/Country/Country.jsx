@@ -9,7 +9,7 @@ export default function Country({ id, name, flag, region, population }) {
                 <p>{name.toUpperCase()}</p>
                 <img src={flag} className={styles.flag} alt="Not found"/>
                 <p>Continent: {region}</p>
-                <p>Population: {population}</p>
+                <p>Population: {population.toLocaleString('en-US')}</p>
             </div>
         </Link>
     )

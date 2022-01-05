@@ -11,7 +11,7 @@ export default function Landing () {
                 </Link>
             </div>
             <div className={styles.divText}>
-                <h1 className={styles.text}>COUNTRIES</h1>
+                <h1 className={styles.text}>COUNTRIVITIES</h1>
             </div>
         </div>
 
