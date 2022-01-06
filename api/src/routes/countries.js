@@ -151,7 +151,7 @@ router.get('/:id', async (req, res) => {
     let { id } = req.params;
     id = id.toUpperCase();
     try {
-        await getData()
+        await getData();
         const country = await Country.findByPk(id, {
             include: [{
                 model: Activity,
