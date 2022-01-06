@@ -7,11 +7,13 @@ import Pagination from '../Pagination/Pagination.jsx';
 import NavBar from "../NavBar/NavBar.jsx";
 import OrderAlph from "../OrderAlph/OrderAlph.jsx";
 import OrderPop from "../OrderPop/OrderPop.jsx";
+import Loader from "react-loader-spinner";
 import styles from './Home.module.css'; 
 
 export default function Home () {
     const countries = useSelector(s => s.filteredCountries);
     const activities = useSelector(s => s.filteredActivities)
+    const allCountries = useSelector(s => s.countries);
     const dispatch = useDispatch();
 
     const [regionFilter, setRegionFilter] = useState('');
@@ -132,30 +134,44 @@ export default function Home () {
                     </div>
                 </div>
             </div>
-            <div>
-                {/* acá renderizamos los números del paginado y le pasamos las props que necesita */}
-                <Pagination 
-                    countriesPerPage={countriesPerPage}
-                    countries={countries.length}
-                    pagination={pagination}
-                />
-            </div>           
-            <div className={styles.countries}>
-                {
-                    // acá vamos a renderizar sólo la porción correspondiente del estado global filteredCountries
-                    currentCountries === "No country" ? 
-                    <p className={styles.texts} >No country found</p> :
-                    currentCountries.map(c=> (
-                        <Country 
-                        id={c.id}
-                        name={c.name}
-                        flag={c.flag}
-                        region={c.region}
-                        population={c.population}
+            { 
+                allCountries.length > 0 ? 
+                <>
+                    <div>
+                        {/* acá renderizamos los números del paginado y le pasamos las props que necesita */}
+                        <Pagination 
+                            countriesPerPage={countriesPerPage}
+                            countries={countries.length}
+                            pagination={pagination}
                         />
-                    ))
-                }
-            </div>
+                    </div>           
+                    <div className={styles.countries}>
+                        {
+                            // acá vamos a renderizar sólo la porción correspondiente del estado global filteredCountries
+                            currentCountries === "No country" ? 
+                            <p className={styles.texts} >No country found</p> :
+                            currentCountries.map(c=> (
+                                <Country 
+                                id={c.id}
+                                name={c.name}
+                                flag={c.flag}
+                                region={c.region}
+                                population={c.population}
+                                />
+                            ))
+                        } 
+                    </div>
+                </>
+                :
+                <div className={styles.loader}>
+                    <Loader 
+                        type="Oval"
+                        color="#00BFFF"
+                        height={100}
+                        width={100}
+                    />
+                </div>
+            }
         </div>
     )
 }
