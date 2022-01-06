@@ -1,4 +1,4 @@
-const getData = async () => {
+const getData = async (next) => {
     try {
         const data = await axios.get('https://restcountries.com/v2/all');
         // .data devuelve la data del get
@@ -20,6 +20,7 @@ const getData = async () => {
                 }
             })
         }
+        return next();
     } catch (e) {
         console.log(e);
     }
