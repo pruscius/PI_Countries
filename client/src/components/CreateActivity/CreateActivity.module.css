@@ -1,10 +1,5 @@
-.err {
-    color: red;
-    font-size: 12px;
-}
-
 .body {
-    background-color: black;
+    background-color: #ebebeb;
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
@@ -13,8 +8,13 @@
     bottom: 0;
     left: 0;
     right: 0;
-    color: white;
+    color: #000000;
     font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.err {
+    color: red;
+    font-size: 12px;
 }
 
 .createAct {
@@ -33,7 +33,7 @@
 }
 
 .fields {
-    margin-top: 20px
+    margin-top: 20px;
 }
 
 .labels {

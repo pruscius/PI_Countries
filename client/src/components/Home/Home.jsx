@@ -79,7 +79,7 @@ export default function Home () {
             <div className={styles.nav}>
                 <NavBar />
             </div>
-            <div className={styles.selects}>
+            <div className={styles.menu}>
                 <div className={styles.buttons}>
                     {/* Les pasamos la función setOrder para que puedan efectuar un cambio en un estado local
                     y así poder volver a renderizar la página */}

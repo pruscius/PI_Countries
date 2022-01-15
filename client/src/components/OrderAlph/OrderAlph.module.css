@@ -20,6 +20,6 @@
 
 .button:hover {
     transition: 0.2s;
-    background-color: #FFC300;
+    background-color: #ffeaea;
     color: black
 }

@@ -1,3 +1,7 @@
+.container {
+    margin: 2em;
+}
+
 .flag {
     height: 100px;
     width: 140px;
@@ -6,7 +10,7 @@
 
 .card {
     background-image: url('../../assets/Country_Background.png');
-    margin: 40px;
+    margin: 0px;
     border-radius: 9px;
     font-family: 'Be Vietnam Pro', sans-serif;
     width: 250px;
@@ -17,13 +21,17 @@
     box-shadow: 6px 4px 12px -4px rgb(0, 0, 0, 0.5);
     font-weight: bold;
     color: black;
+    transition: transform .4s
+}
+
+.card:hover{
+    transform: scale(1.045);
+}
+.showInfo {
+    position: absolute;
+    align-self: center;
 }
 
 .link {
     text-decoration: none;
-}
-
-.card:hover {
-    background-color: #F5DA93;
-    transition: 0.6s;
 }
