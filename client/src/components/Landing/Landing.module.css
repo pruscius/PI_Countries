@@ -55,13 +55,14 @@
   text-decoration: none;
   cursor: pointer;
   text-align: center;
-  transition: ease-out 0.6s;
+  transition: ease-out 0.5s;
   outline: none;
 }
 
 
 .button:hover {
   box-shadow: inset 6.2em 0 0 0 #ca9369;
+  text-shadow: 3px 3px 20px #000000;
   color: #fff;
   text-decoration: none;
   /* background-color: #ca9369 */
