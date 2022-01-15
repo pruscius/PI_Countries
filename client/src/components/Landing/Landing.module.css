@@ -1,50 +1,88 @@
 .landing {
-    background-image: url('../../assets/Countries_Bar.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0
-  }
-
-  .buttonDiv {
-    display: flex;
-    justify-content: center;
-    margin: 70px;
-    margin-top: 90px;
-    margin-left: 100px
-  }
-
-  .button {
-    background: #000306;
-    color: #FFFFFF;
-    font-family: Helvetica;
-    font-size: 40px;
-    font-weight: 100;
-    padding: 25px;
-    border-radius: 7px;
-    box-shadow: 1px 1px 20px 0 #000000; 
-    text-shadow: 1px 1px 20px #000000;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center
+  background-image: url('../../assets/Globe_Right.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center ;
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
 }
+
+.divName {
+  display:flex;
+  justify-content: flex-start;  
+  margin-top: 20vh;
+  margin-left: 2vw; 
+  max-width: 100%; 
+}
+
+.name {
+  font-family: 'Lobster', cursive;
+  font-weight: lighter;
+  font-size: 10vh;
+  color: #fff;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 3.5vw;
+  margin-top: 14vh;
+  margin-bottom: -4vh;
+}
+
+.link {
+  z-index: 1000;
+}
+
+.button {
+  background: #fff;
+  color: black;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: large;
+  font-weight: bold;
+  height: 5vh;
+  width: 6.2em;
+  border-style: none;
+  border-radius: 2px;
+  box-shadow: 1px 1px 20px 0 #000000; 
+  box-shadow: inset 0.6em 0 0 0 #ca9369;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: ease-out 0.6s;
+  outline: none;
+}
+
 
 .button:hover {
-  text-decoration: none;background-color: #78281F
+  box-shadow: inset 6.2em 0 0 0 #ca9369;
+  color: #fff;
+  text-decoration: none;
+  /* background-color: #ca9369 */
 }
 
-.divText {
-  display:flex;
-  justify-content: center;  
-  margin-top: 50px;
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.divSlogan {
+  color: rgba(255, 255, 255, 0.384);
+  margin-left: 2vw;
+  /* margin-top: 20vh; */
 }
 
-.text {
-  font-family: Helvetica;
-  font-size: 150px;
-  color: #F9D223;
+.slogan {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10vh;
+  line-height: 8vh;
 }
