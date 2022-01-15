@@ -8,11 +8,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
+    overflow: auto;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    color: white
+    color: white;
+    font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 .createAct {
@@ -45,7 +47,7 @@
     color: #FFC300;
     border-radius: 9px;
     border-color: white;
-    font-family: Helvetica;
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 16px;
     font-weight: 100;
     padding:5px;
@@ -75,7 +77,7 @@
     background: #FFC300;
     border-radius: 9px;
     color: #FFFFFF;
-    font-family: Helvetica;
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 16px;
     font-weight: 100;
     color: black;

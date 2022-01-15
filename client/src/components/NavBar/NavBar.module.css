@@ -1,24 +1,40 @@
 .navBar {
     display:flex;
     justify-content: space-around;
-    background-color: #FFC300;
+    background-color: #81b0a3;
+    height: 8vh;
+}
+
+.nameHome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.brandName {
+    font-family: 'Lobster', cursive;
+    color: #fff;
+    margin-right: 2vw;
 }
 
 .homeButton {
     background: #000306;
-    border-radius: 9px;
+    border-radius: 4px;
+    border-style: none;
     color: #FFFFFF;
-    font-family: Helvetica;
-    font-size: 16px;
-    font-weight: 100;
-    padding:5px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 1rem;
+    padding: 5px;
     text-shadow: 1px 1px 20px #000000;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
     text-align: center;
-    margin-top: 10px;
     font-weight: bold;
+}
+
+.searchBar {
+    align-self: center;
 }
 
 .aboutLink {
@@ -27,6 +43,14 @@
 
 .about {
     text-decoration: none;
-    color: black;
-    font-weight:bold
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 3px 3px 2px black;
+    transition: 0.2s ease-out;
+}
+
+.about:hover {
+    text-shadow: 2px 2px 5px black;
+    transform: translate3d(0,1.4px,0);
 }

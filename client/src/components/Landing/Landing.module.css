@@ -65,21 +65,11 @@
   text-shadow: 3px 3px 20px #000000;
   color: #fff;
   text-decoration: none;
-  /* background-color: #ca9369 */
 }
 
-@keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 .divSlogan {
   color: rgba(255, 255, 255, 0.384);
   margin-left: 2vw;
-  /* margin-top: 20vh; */
 }
 
 .slogan {

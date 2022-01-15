@@ -20,12 +20,12 @@ export default function Home () {
     const [ascDesc, setAscDesc] = useState('');
     const [order, setOrder] = useState(''); // Utilizado para que haya un cambio y se re-renderice la pag
     const [currentPage, setCurrentPage] = useState(1); // Página que se muestra en el momento
-    const [countriesPerPage, setCountriesPerPage] = useState(10); // Cantidad de países por página
+    const [countriesPerPage, setCountriesPerPage] = useState(12); // Cantidad de países por página
     const indexLastCountry = currentPage * countriesPerPage; 
     const indexFirstCountry = indexLastCountry - countriesPerPage; 
-    let currentCountries = currentPage === 1 ? countries.slice(indexFirstCountry, indexLastCountry - 1) 
-        : countries.slice(indexFirstCountry - 1, indexLastCountry); // 9 en la primera y 10 en el resto
-    // const currentCountries = countries.slice(indexFirstCountry, indexLastCountry) // 10 en todas.
+    // let currentCountries = currentPage === 1 ? countries.slice(indexFirstCountry, indexLastCountry - 1) 
+    //     : countries.slice(indexFirstCountry - 1, indexLastCountry); // 9 en la primera y 10 en el resto
+    const currentCountries = countries.slice(indexFirstCountry, indexLastCountry) // 10 en todas.
     // Esta es la porción del array del estado filteredCountries que queremos que se rendereice.
 
 
@@ -76,32 +76,10 @@ export default function Home () {
     
     return (
         <div className={styles.body}>
-            <NavBar />
+            <div className={styles.nav}>
+                <NavBar />
+            </div>
             <div className={styles.selects}>
-                    <div className={styles.filters}>
-                        <h4 className={styles.texts} >FILTER BY: </h4>
-                        <p className={styles.texts} >Continent: </p>
-                        <select onChange={(e) => { handleFilterContinent(e) }}>
-                            <option value="All">All</option>
-                            <option value="Africa">Africa</option>
-                            <option value="Americas">Americas</option>
-                            <option value="Antarctic">Antarctic</option>
-                            <option value="Antarctic Ocean">Antarctic Ocean</option>
-                            <option value="Asia">Asia</option>
-                            <option value="Europe">Europe</option>
-                            <option value="Oceania">Oceania</option>
-                            <option value="Polar">Polar</option>                        
-                        </select>
-                        <p className={styles.texts}>Activity: </p>
-                        <select onChange={e => handleFilterActivity(e)}>
-                            <option value="All">All</option>
-                            {  
-                                activities?.map(a => (
-                                    <option>{a.name}</option>
-                                ))
-                            }
-                        </select>
-                    </div>
                 <div className={styles.buttons}>
                     {/* Les pasamos la función setOrder para que puedan efectuar un cambio en un estado local
                     y así poder volver a renderizar la página */}
@@ -112,17 +90,42 @@ export default function Home () {
                         <Link to="/postActivity">
                             <button className={styles.button}>Create Activity</button>
                         </Link>
-
+                    </div>
+                </div>
+                
+                <div className={styles.filtersCont}>
+                    <div className={styles.filters}>
+                        <select className={styles.select} onChange={(e) => { handleFilterContinent(e) }}>
+                            <option value="All">Filter By Continent</option>
+                            <option value="Africa">Africa</option>
+                            <option value="Americas">Americas</option>
+                            <option value="Antarctic">Antarctic</option>
+                            <option value="Antarctic Ocean">Antarctic Ocean</option>
+                            <option value="Asia">Asia</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Oceania">Oceania</option>
+                            <option value="Polar">Polar</option>                        
+                        </select>
+                        <select className={styles.select} onChange={e => handleFilterActivity(e)}>
+                            <option value="All">Filter By Activity</option>
+                            {  
+                                activities?.map(a => (
+                                    <option>{a.name}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <div>
                         {/* BOTON PARA TRAER LOS FILTRADOS Y ORDENAMIENTOS DESDE EL BACK */}
                         <form onSubmit={e=>handleNewSubmit(e)}>    
-                            <select onChange={e=>handleChangeFilter(e)}>
+                            <select className={styles.select} onChange={e=>handleChangeFilter(e)}>
                                 <option value="Americas">America</option>
                                 <option value="Africa">Africa</option>
                                 <option value="Asia">Asia</option>
                                 <option value="Europe">Europe</option>
                                 <option value="Oceania">Oceania</option>
                             </select>
-                            <select onChange={e=>handleChangeAscDesc(e)}>
+                            <select className={styles.select} onChange={e=>handleChangeAscDesc(e)}>
                                 <option value="desc">Ascending</option>
                                 <option value="asc">Descending</option>
                             </select>
@@ -166,7 +169,7 @@ export default function Home () {
                 <div className={styles.loader}>
                     <Loader 
                         type="Oval"
-                        color="#00BFFF"
+                        color="#ca9369"
                         height={100}
                         width={100}
                     />

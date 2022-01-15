@@ -13,12 +13,11 @@
 }
 
 .pagBtn {
-    background: #FFC300;
-    color: black;
-    font-family: Helvetica;
+    background: #000000;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
     font-size: 15px;
-    /* padding:5px; */
-    border-radius: 7px;
+    border-radius: 5px;
     text-shadow: 1px 1px 20px #000000;
     text-decoration: none;
     display: inline-block;
@@ -28,5 +27,6 @@
     font-weight: bold;
     margin-left:8px;
     margin-right: 8px;
-    border: solid 
+    border-style: solid;
+    border-color: #000000; 
 }

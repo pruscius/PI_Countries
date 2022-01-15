@@ -25,7 +25,7 @@ export default function SearchBar () {
                 <input 
                     name="countryName" 
                     type="text" 
-                    placeholder="Search countries..."
+                    placeholder="Search country"
                     value={name}
                     onChange={handleChange}
                     className={styles.input}

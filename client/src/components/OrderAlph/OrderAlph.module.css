@@ -1,12 +1,14 @@
 .button {
-    background: #000306;
-    border-radius: 9px;
-    color: #FFFFFF;
-    font-family: Helvetica;
-    font-size: 16px;
+    background: #ecdede;
+    border-radius: 3px;
+    color: #5c5555;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    border-style: none;
+    font-size: 0.9rem;
+    height: 4.2vh;
     font-weight: 100;
     padding:5px;
-    text-shadow: 1px 1px 20px #000000;
+    box-shadow: 1px 1px 4px 1px #552d0d;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;

@@ -1,17 +1,20 @@
 .flag {
     height: 100px;
-    width: 140px
+    width: 140px;
+    /* box-shadow: 6px 4px 12px -4px rgb(0, 0, 0, 0.5); */
 }
 
 .card {
+    background-image: url('../../assets/Country_Background.png');
     margin: 40px;
     border-radius: 9px;
+    font-family: 'Be Vietnam Pro', sans-serif;
     width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    background-color:white;
+    box-shadow: 6px 4px 12px -4px rgb(0, 0, 0, 0.5);
     font-weight: bold;
     color: black;
 }
@@ -22,6 +25,5 @@
 
 .card:hover {
     background-color: #F5DA93;
-    border-radius: 15px;
     transition: 0.6s;
 }

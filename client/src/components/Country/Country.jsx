@@ -6,10 +6,10 @@ export default function Country({ id, name, flag, region, population }) {
     return (
         <Link to={`/countries/${id}`} className={styles.link}>
             <div key={id} className={styles.card}>
-                <p>{name.toUpperCase()}</p>
+                <h3>{name}</h3>
                 <img src={flag} className={styles.flag} alt="Not found"/>
-                <p>Continent: {region}</p>
-                <p>Population: {population.toLocaleString('en-US')}</p>
+                <h4>{region}</h4>
+                {/* <h5>Population: {population.toLocaleString('en-US')}</h5> */}
             </div>
         </Link>
     )

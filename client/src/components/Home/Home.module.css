@@ -1,10 +1,48 @@
+.body {
+    background-color: #ebebeb;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav {
+    box-shadow: 0 6px 5px -2px rgb(187, 186, 186);
+}
+
 .countries {
     display: flex;
     flex-wrap: wrap
 }
 
 .selects {
-    margin-top: 10px
+    background-color: #c78660;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8vh;
+    width: 60%;
+    align-self: center;
+    padding: 1em;
+}
+
+.select {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    border-style: none;
+    margin-right: 6px;
+    height: 4.2vh;
+    border-radius: 2px;
+    font-size: 0.9rem;
 }
 
 .buttons {
@@ -30,33 +68,25 @@
     margin-right: 5px;
 }
 
-.body {
-    background-color: black;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0
-}
 
 .texts {
+    font-family: 'Be Vietnam Pro', sans-serif;
     color: white;
     margin-right: 7px;
     margin-left: 7px
 }
 
 .button {
-    background: #000306;
-    border-radius: 9px;
-    color: #FFFFFF;
-    font-family: Helvetica;
-    font-size: 16px;
+    background: #ecdede;
+    border-radius: 3px;
+    color: #5c5555;
+    height: 4.2vh;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    border-style: none;
+    font-size: 0.9rem;
     font-weight: 100;
     padding:5px;
-    text-shadow: 1px 1px 20px #000000;
+    box-shadow: 1px 1px 4px 1px #552d0d;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
@@ -70,6 +100,13 @@
     transition: 0.2s;
     background-color: #FFC300;
     color: black
+}
+
+.filtersCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5px;
 }
 
 .loader {
