@@ -27,10 +27,6 @@
 .card:hover{
     transform: scale(1.045);
 }
-.showInfo {
-    position: absolute;
-    align-self: center;
-}
 
 .link {
     text-decoration: none;

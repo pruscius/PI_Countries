@@ -15,6 +15,9 @@ export default function NavBar () {
             <div className={styles.searchBar}>
                 <SearchBar />
             </div>
+            <Link to="/postActivity">
+                <button className={styles.createActBtn}>Create Activity</button>
+            </Link>
             <Link to="/about" className={styles.aboutLink}>
                 <p className={styles.about}>About</p>
             </Link>

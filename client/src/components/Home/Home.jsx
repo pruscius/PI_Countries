@@ -87,9 +87,6 @@ export default function Home () {
                     <OrderPop  setOrder={setOrder}/>
                     <div>
                         <button className={styles.button} onClick={handleRefreshClick}>Refresh Countries</button>
-                        <Link to="/postActivity">
-                            <button className={styles.button}>Create Activity</button>
-                        </Link>
                     </div>
                 </div>
                 

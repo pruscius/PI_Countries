@@ -3,6 +3,7 @@
     justify-content: space-around;
     background-color: #81b0a3;
     height: 8vh;
+    align-items: center;
 }
 
 .nameHome {
@@ -25,7 +26,6 @@
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 1rem;
     padding: 5px;
-    text-shadow: 1px 1px 20px #000000;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
@@ -35,6 +35,26 @@
 
 .searchBar {
     align-self: center;
+}
+
+.createActBtn {
+    background-color: #f3f2f2;
+    border-radius: 4px;
+    border-style: none;
+    color: #000000;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 1rem;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: ease-in-out 0.15s;
+}
+
+.createActBtn:hover {
+    background-color: #d6d1d1;
 }
 
 .aboutLink {
