@@ -1,17 +1,23 @@
 .container {
     margin: 2em;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    transition: transform .4s;
+    /* cursor: pointer; */
+    /* filter: grayscale(30%); */
 }
 
-.flag {
-    height: 100px;
-    width: 140px;
-    /* box-shadow: 6px 4px 12px -4px rgb(0, 0, 0, 0.5); */
+.container:hover {
+    transform: scale(1.045);
 }
 
 .card {
-    background-image: url('../../assets/Country_Background.png');
+    /* background-image: url('../../assets/Country_Background.png'); */
     margin: 0px;
-    border-radius: 9px;
     font-family: 'Be Vietnam Pro', sans-serif;
     width: 250px;
     display: flex;
@@ -20,12 +26,16 @@
     text-decoration: none;
     box-shadow: 6px 4px 12px -4px rgb(0, 0, 0, 0.5);
     font-weight: bold;
-    color: black;
-    transition: transform .4s
+    color: #fff;
+    /* z-index: 1; */
 }
 
-.card:hover{
-    transform: scale(1.045);
+
+.name, .continent {
+    /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+    color: #fff;
+    /* filter: brightness(95%) */
+    /* z-index: 1; */
 }
 
 .link {

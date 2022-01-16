@@ -1,26 +1,24 @@
 .form {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 1px;
     height: 25px;
 }
 
 .input {
-    border-radius: 3px;
+    background-color: #000000;
+    border-width: 0 0 1px;
+    border-color: #fff;
     font-family: 'Be Vietnam Pro', sans-serif;
-    border-style: none
 }
 
 .input:focus {
-    outline: none
+    outline: none;
+    background-color: #000000;
+    color: #fff;
 }
 
 .searchBtn {
-    background-color: black;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    color: white;
-    border-radius: 3px;
-    border-style: none;
-    font-weight: bold;
-    cursor: pointer;
+    cursor: pointer
 }

@@ -1,25 +1,17 @@
 .button {
-    background: #ecdede;
-    border-radius: 3px;
-    color: #5c5555;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    border-style: none;
-    font-size: 0.9rem;
+    color: #f8f8f8;
+    background-color: #000000;
     height: 4.2vh;
+    font-family: 'Century Gothic';
+    font-size: 1.05rem;
     font-weight: 100;
-    padding:5px;
-    box-shadow: 1px 1px 4px 1px #552d0d;
+    padding:5px;    
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
+    border-style: none;
     text-align: center;
     margin-top: 6px;
     font-weight: bold;
-    margin-left: 15px
-}
-
-.button:hover {
-    transition: 0.2s;
-    background-color: #ffeaea;
-    color: black
+    margin-left: 15px;
 }

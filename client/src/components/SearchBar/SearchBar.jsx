@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { getCountryName } from '../../actions/actions.js';
 import styles from './SearchBar.module.css';
+import { BsSearch } from "react-icons/bs";
 
 export default function SearchBar () {
 
@@ -22,15 +23,15 @@ export default function SearchBar () {
 
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
-                <input 
-                    name="countryName" 
-                    type="text" 
-                    placeholder="Search country"
-                    value={name}
-                    onChange={handleChange}
-                    className={styles.input}
-                />
-                <input type="submit" value="Search" className={styles.searchBtn}/>
-            </form>
+            <input 
+                name="countryName" 
+                type="text" 
+                value={name}
+                onChange={handleChange}
+                className={styles.input}
+                autoComplete="off"
+            />
+            <BsSearch className={styles.searchBtn} onClick={handleSubmit} size="1.3em" color="rgb(238, 238, 238)" />
+        </form>
     )
 }
