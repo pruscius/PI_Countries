@@ -7,7 +7,7 @@ const initialState = {
 }
 
 const rootReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case "GET_NEW_COUNTRIES":
             return {
                 ...state,
@@ -45,8 +45,8 @@ const rootReducer = (state = initialState, action) => {
             } else {
                 filterByActivity = countryActivities.filter(c => {
                     // Reviso si el país tiene la actividad, y si la tiene lo filtro, sino no.
-                   let act = c.activities.find(a => a.name === action.payload);
-                   if (act) return c;
+                    let act = c.activities.find(a => a.name === action.payload);
+                    if (act) return c;
                 })
             }
             return {
@@ -59,8 +59,8 @@ const rootReducer = (state = initialState, action) => {
         // países o los países filtrados por continente o actividad.
         // Recibe un función comparadora por parámetro que determina la lógica a seguir. 
         case "ORDER_COUNTRIES_ALPH_AZ":
-        let orderedCountries = state.filteredCountries;
-            orderedCountries.sort(function(a, b) {
+            let orderedCountries = state.filteredCountries;
+            orderedCountries.sort(function (a, b) {
                 if (a.name > b.name) {
                     return 1;
                 }
@@ -75,7 +75,7 @@ const rootReducer = (state = initialState, action) => {
             };
         case "ORDER_COUNTRIES_ALPH_ZA":
             let orderedCountries1 = state.filteredCountries;
-            orderedCountries1.sort(function(a, b) {
+            orderedCountries1.sort(function (a, b) {
                 if (a.name > b.name) {
                     return -1;
                 }
@@ -87,8 +87,8 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 filteredCountries: orderedCountries1
-            }; 
-            // Al ordenar por números, se puede condensar la función a lo que está escrito. Con strings NO.
+            };
+        // Al ordenar por números, se puede condensar la función a lo que está escrito. Con strings NO.
         case "ORDER_COUNTRIES_POP_ASC":
             let orderedCountries2 = state.filteredCountries;
             orderedCountries2.sort((a, b) => b.population - a.population)
@@ -99,10 +99,10 @@ const rootReducer = (state = initialState, action) => {
         case "ORDER_COUNTRIES_POP_DESC":
             let orderedCountries3 = state.filteredCountries;
             orderedCountries3.sort((a, b) => a.population - b.population)
-        return {
-            ...state,
-            filteredCountries: orderedCountries3
-        };
+            return {
+                ...state,
+                filteredCountries: orderedCountries3
+            };
         case "GET_COUNTRY_NAME":
             return {
                 ...state,

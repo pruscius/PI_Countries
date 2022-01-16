@@ -26,7 +26,9 @@ export default function Home () {
     const indexFirstCountry = indexLastCountry - countriesPerPage; 
     // let currentCountries = currentPage === 1 ? countries.slice(indexFirstCountry, indexLastCountry - 1) 
     //     : countries.slice(indexFirstCountry - 1, indexLastCountry); // 9 en la primera y 10 en el resto
-    const currentCountries = countries.slice(indexFirstCountry, indexLastCountry) // 10 en todas.
+    const currentCountries = Array.isArray(countries) ? countries.slice(indexFirstCountry, indexLastCountry) 
+        : "No country"    
+    // 10 en todas.
     // Esta es la porción del array del estado filteredCountries que queremos que se rendereice.
 
 
@@ -153,7 +155,10 @@ export default function Home () {
                         {
                             // acá vamos a renderizar sólo la porción correspondiente del estado global filteredCountries
                             currentCountries === "No country" ? 
-                            <p className={styles.texts} >No country found</p> :
+                            <div className={styles.noCountryContainer}>
+                                <p className={styles.noCountry} >No countries found.</p> 
+                            </div>   
+                            :
                             currentCountries.map(c=> (
                                 <Country 
                                 id={c.id}

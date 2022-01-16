@@ -66,13 +66,26 @@
     margin-right: 5px;
 }
 
-
 .texts {
     font-family: 'Be Vietnam Pro', sans-serif;
     color: white;
     margin-right: 7px;
-    margin-left: 7px
+    margin-left: 7px;
 }
+
+.noCountryContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%
+}
+
+.noCountry {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: #000000;
+    font-weight: bold; 
+}
+
 
 .button {
     color: #f8f8f8;
