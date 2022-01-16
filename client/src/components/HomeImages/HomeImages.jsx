@@ -6,7 +6,7 @@ export default function HomeImages() {
         <div className={styles.container}>
             <div className={styles.phrasesContainer}>
                 <div className={styles.phraseContainer}>
-                    <h1 className={styles.phrase}>Find Experiences</h1>
+                    <h1 className={styles.phrase}>Find experiences</h1>
                     <h1 className={styles.phrase}>.</h1>
                 </div>
                 <div className={styles.phraseContainer}>
