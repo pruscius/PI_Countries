@@ -10,7 +10,9 @@ export default function NavBar () {
     return (
         <div className={styles.navBar}>
             <div className={styles.nameCont}>
-                <h2 className={styles.brandName}>Countrivities</h2> 
+                <Link className={styles.link} to="/home">
+                    <h2 className={styles.brandName}>Countrivities</h2> 
+                </Link>
                 <GiWorld color="#fff" size="1.5em"/>
             </div>
             <div className={styles.options}>
@@ -32,9 +34,9 @@ export default function NavBar () {
                         <h4 className={styles.btn}>About</h4>
                     </Link>
                 </div>
-                <div className={styles.searchBar}>
+                {/* <div className={styles.searchBar}>
                     <SearchBar />
-                </div>
+                </div> */}
             </div>
         </div>
     )

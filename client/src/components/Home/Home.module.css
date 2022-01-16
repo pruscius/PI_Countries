@@ -86,6 +86,9 @@
     font-weight: bold; 
 }
 
+.searchBarContainer {
+    margin-top: 2vh;
+}
 
 .button {
     color: #f8f8f8;

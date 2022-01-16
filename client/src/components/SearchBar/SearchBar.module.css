@@ -7,16 +7,17 @@
 }
 
 .input {
-    background-color: #000000;
+    background-color: #ebebeb;
     border-width: 0 0 1px;
-    border-color: #fff;
+    border-color: #000000;
     font-family: 'Be Vietnam Pro', sans-serif;
+    margin-right: 0.6em;
 }
 
 .input:focus {
     outline: none;
-    background-color: #000000;
-    color: #fff;
+    background-color: #ebebeb;
+    color: #000000;
 }
 
 .searchBtn {

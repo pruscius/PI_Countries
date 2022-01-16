@@ -31,7 +31,7 @@ export default function SearchBar () {
                 className={styles.input}
                 autoComplete="off"
             />
-            <BsSearch className={styles.searchBtn} onClick={handleSubmit} size="1.3em" color="rgb(238, 238, 238)" />
+            <BsSearch className={styles.searchBtn} onClick={handleSubmit} size="1.3em" color="#000000" />
         </form>
     )
 }

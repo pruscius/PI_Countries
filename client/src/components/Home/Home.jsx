@@ -10,6 +10,7 @@ import HomeImages from "../HomeImages/HomeImages.jsx";
 import OrderPop from "../OrderPop/OrderPop.jsx";
 import Loader from "react-loader-spinner";
 import styles from './Home.module.css'; 
+import SearchBar from "../SearchBar/SearchBar.jsx";
 
 export default function Home () {
     const countries = useSelector(s => s.filteredCountries);
@@ -140,17 +141,12 @@ export default function Home () {
                     </div>
                 </div>
             </div>
+            <div className={styles.searchBarContainer}>
+                <SearchBar />
+            </div>
             { 
                 allCountries.length > 0 ? 
                 <>
-                    <div>
-                        {/* acá renderizamos los números del paginado y le pasamos las props que necesita */}
-                        <Pagination 
-                            countriesPerPage={countriesPerPage}
-                            countries={countries.length}
-                            pagination={pagination}
-                        />
-                    </div>           
                     <div className={styles.countries}>
                         {
                             // acá vamos a renderizar sólo la porción correspondiente del estado global filteredCountries
@@ -167,9 +163,17 @@ export default function Home () {
                                 region={c.region}
                                 population={c.population}
                                 />
-                            ))
+                                ))
                         } 
                     </div>
+                    <div>
+                        {/* acá renderizamos los números del paginado y le pasamos las props que necesita */}
+                        <Pagination 
+                            countriesPerPage={countriesPerPage}
+                            countries={countries.length}
+                            pagination={pagination}
+                        />
+                    </div>           
                 </>
                 :
                 <div className={styles.loader}>
