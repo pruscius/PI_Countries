@@ -104,9 +104,10 @@ const rootReducer = (state = initialState, action) => {
                 filteredCountries: orderedCountries3
             };
         case "GET_COUNTRY_NAME":
+            let searchedCountries = state.countries.filter(c => c.name.toLowerCase().startsWith(action.payload.toLowerCase()))
             return {
                 ...state,
-                filteredCountries: action.payload
+                filteredCountries: searchedCountries
             };
         case "GET_DETAILS":
             return {

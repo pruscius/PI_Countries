@@ -115,17 +115,11 @@ export function orderCountriesPopDesc() {
 
 
 export function getCountryName(name) {
-    return async function (dispatch) {
-        try {
-            let countries = await axios.get(`/countries?name=${name}`);
-            dispatch({
-                type: GET_COUNTRY_NAME,
-                payload: countries.data
-            })
-        } catch (e) {
-            console.log(e)
-        }
+    return {
+        type: GET_COUNTRY_NAME,
+        payload: name
     }
+
 }
 
 

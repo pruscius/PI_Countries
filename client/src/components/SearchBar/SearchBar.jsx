@@ -9,10 +9,11 @@ export default function SearchBar () {
     // const countries = useSelector(s => s.filteredCountries); // si lo quiero usar tengo que importar useSec
     const dispatch = useDispatch();
 
-    const [name, setName] = useState('')
+    const [name, setName] = useState('');
 
     function handleChange(e){
         setName(e.target.value);
+        dispatch(getCountryName(e.target.value));
     };
 
     function handleSubmit(e) {
