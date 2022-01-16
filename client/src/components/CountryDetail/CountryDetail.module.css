@@ -10,22 +10,47 @@
     right: 0;
 }
 
-.btn {
-    background: #000306;
-    border-radius: 9px;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-weight: 100;
-    padding:5px;
-    text-shadow: 1px 1px 20px #000000;
+.header {
+    background-image: url('../../assets/Globe_Brownish.jpg');
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.back {
     text-decoration: none;
-    display: inline-block;
     cursor: pointer;
-    text-align: center;
-    margin-top: 6px;
-    font-weight: bold;
     margin: 20px
+}
+
+.nameFlagContainer {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh
+}
+
+.name {
+    color: #fff;
+    text-shadow: #000 0.0625rem 0 0.625rem;
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+}
+
+.flag {
+    filter: grayscale(40%);
+    border-radius: 4px;
+    margin-left: 50px;
+    display: inline-block;
+    width: 80px;
+    filter: drop-shadow(2px 5px 2px rgba(3,3,3,.5));
 }
 
 .card {
@@ -40,10 +65,6 @@
     margin-top: 30px;       
 }
 
-.flag {
-    height: 200px;
-    width: 300px
-}
 
 .p {
     margin: 2px;

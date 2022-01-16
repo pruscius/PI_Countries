@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import NavBar from '../NavBar/NavBar.jsx';
 import { Link, useParams } from 'react-router-dom';
 import { getDetail } from '../../actions/actions.js';
+import { IoArrowBack } from "react-icons/io5";
 import styles from './CountryDetail.module.css';
 
 export default function CountryDetail () {
@@ -17,17 +18,27 @@ export default function CountryDetail () {
     return (
         <div className={styles.body}>
             <NavBar />
-            <Link to="/home">
-                <button className={styles.btn}>Back</button>
-            </Link>
+            
+            
+            
+            <div className={styles.header}>
+                <Link to="/home">
+                    <IoArrowBack size="2.3em" color="#fff" className={styles.back}/>
+                </Link>
+                <div className={styles.nameFlagContainer}>
+                    <h1 className={styles.name}>{country.name}
+                        <img src={country.flag} alt="Not found" className={styles.flag}/>
+                    </h1>
+                </div>
+            </div>
+
+
+
+
             <div className={styles.outerCard}>
             {   
                 typeof country === 'object' ?
                 <div key={country.id} className={styles.card}>
-                    <h1>{country.name}</h1>
-                    <a href={country.flag}>
-                    <img src={country.flag}alt="Not found" className={styles.flag}/>
-                    </a>
                     <p className={styles.p}>Continent: {country.region}</p>
                     <p className={styles.p}>Population: {country.population}</p>
                     <p className={styles.p}>Capital: {country.capital}</p>
