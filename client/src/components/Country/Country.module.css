@@ -40,10 +40,8 @@
 
 
 .name, .continent {
-    /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
     color: #fff;
-    /* filter: brightness(95%) */
-    /* z-index: 1; */
+    text-shadow: #000 0.0625rem 0 0.625rem;
 }
 
 .link {
