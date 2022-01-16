@@ -1,0 +1,31 @@
+.container {
+    background-image: url('../../assets/Canyon_Van.jpg');
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.phrasesContainer {
+    margin-top: 8vh;
+    margin-left: 6vw;
+}
+
+.phraseContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.phrase {
+    font-family: "Century Gothic";
+    font-size: 60px;
+    color: rgb(255, 255, 255);
+    text-shadow: 10px 10px 20px 20px rgb(0 0 0);
+    font-weight: 100;
+    margin-top: 0.1vh;
+    margin-bottom: 0.1vh;
+}

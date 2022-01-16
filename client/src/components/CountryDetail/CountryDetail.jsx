@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import NavBar from '../NavBar/NavBar.jsx';
 import { Link, useParams } from 'react-router-dom';
 import { getDetail } from '../../actions/actions.js';
 import styles from './CountryDetail.module.css';
@@ -15,6 +16,7 @@ export default function CountryDetail () {
 
     return (
         <div className={styles.body}>
+            <NavBar />
             <Link to="/home">
                 <button className={styles.btn}>Back</button>
             </Link>

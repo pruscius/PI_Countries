@@ -20,8 +20,8 @@ export default function OrderPop({ setOrder }) {
     
     return (
         <div>
-            <button className={styles.button} name="popAsc" onClick={e => handleClick (e)}>Highest Population</button>
-            <button className={styles.button} name="popDesc" onClick={handleClick}>Lowest Population</button>
+            <button className={styles.button} name="popAsc" onClick={e => handleClick (e)}>HIGHEST POPULATION</button>
+            <button className={styles.button} name="popDesc" onClick={handleClick}>LOWEST POPULATION</button>
         </div>
     )
 }

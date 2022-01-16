@@ -6,6 +6,7 @@ import Country from '../Country/Country.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
 import NavBar from "../NavBar/NavBar.jsx";
 import OrderAlph from "../OrderAlph/OrderAlph.jsx";
+import HomeImages from "../HomeImages/HomeImages.jsx";
 import OrderPop from "../OrderPop/OrderPop.jsx";
 import Loader from "react-loader-spinner";
 import styles from './Home.module.css'; 
@@ -79,6 +80,9 @@ export default function Home () {
             <div className={styles.nav}>
                 <NavBar />
             </div>
+            <div>
+                <HomeImages />
+            </div>
             <div className={styles.menu}>
                 <div className={styles.buttons}>
                     {/* Les pasamos la función setOrder para que puedan efectuar un cambio en un estado local
@@ -86,7 +90,7 @@ export default function Home () {
                     <OrderAlph setOrder={setOrder} />
                     <OrderPop  setOrder={setOrder}/>
                     <div>
-                        <button className={styles.button} onClick={handleRefreshClick}>Refresh Countries</button>
+                        <button className={styles.button} onClick={handleRefreshClick}>REFRESH COUNTRIES</button>
                     </div>
                 </div>
                 
@@ -128,7 +132,7 @@ export default function Home () {
                             </select>
                             <input className={styles.button}
                             type="submit"
-                            value="Order"
+                            value="ORDER"
                             />
                         </form>
                     </div>
