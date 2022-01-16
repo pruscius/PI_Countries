@@ -1,5 +1,4 @@
 import React from "react";
-import SearchBar from "../SearchBar/SearchBar.jsx";
 import { Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
 import { AiOutlineHome, AiOutlineInfoCircle } from 'react-icons/ai';
@@ -29,14 +28,7 @@ export default function NavBar () {
                     </Link>
                 </div>
                 <div className={styles.optionDiv}>
-                    <Link to="/about" className={styles.link}>
-                        <AiOutlineInfoCircle className={styles.iconAbout} size="1.3em" color="#fff" />
-                        <h4 className={styles.btn}>About</h4>
-                    </Link>
                 </div>
-                {/* <div className={styles.searchBar}>
-                    <SearchBar />
-                </div> */}
             </div>
         </div>
     )

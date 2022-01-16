@@ -36,26 +36,49 @@ export default function CountryDetail () {
 
 
             <div className={styles.outerCard}>
-            {   
-                typeof country === 'object' ?
-                <div key={country.id} className={styles.card}>
-                    <p className={styles.p}>Continent: {country.region}</p>
-                    <p className={styles.p}>Population: {country.population}</p>
-                    <p className={styles.p}>Capital: {country.capital}</p>
-                    <p className={styles.p}>Sub-region: {country.subregion}</p>
-                    <p className={styles.p}>Area: {country.area} kms2</p>
-                    {
-                        country.activities?.map(a => (
-                            <>
-                                <p className={styles.p}>Activities: </p>
-                                <p className={styles.p}>{a.name} in {a.seasons}</p>
-                            </>
-                        ))
-                    }
-                </div> : 
-                <h3>Error 404 Not Found</h3>
-            }
+                {   
+                    Object.keys(country).length > 1 ?
+                    <div key={country.id} className={styles.card}>
+                        <div className={styles.dataContainer}>
+                            <h4 className={styles.dataTitle}>Continent</h4>
+                            <h4 className={styles.dataValue}>{country.region}</h4>
+                        </div>
+                        <div className={styles.dataContainer}>
+                            <h4 className={styles.dataTitle}>Population</h4>
+                            <h4 className={styles.dataValue}>{country.population.toLocaleString('es-ES')} M</h4>
+                        </div>
+                        <div className={styles.dataContainer}>
+                            <h4 className={styles.dataTitle}>Capital</h4>
+                            <h4 className={styles.dataValue}>{country.capital}</h4>
+                        </div>
+                        <div className={styles.dataContainer}>
+                            <h4 className={styles.dataTitle}>Sub-region</h4>
+                            <h4 className={styles.dataValue}>{country.subregion}</h4>
+                        </div>
+                        <div className={styles.dataContainer}>
+                            <h4 className={styles.dataTitle}>Area</h4>
+                            <h4 className={styles.dataValue}>{country.area} km²</h4>
+                        </div>
+                    </div>
+                    :
+                    <h3>Error 404 Not Found</h3>
+                }
             </div>
+            <div className={styles.activitiesContainer}>
+                <h1>Activities</h1>
+            </div>
+
+            {
+                Object.keys(country).length > 1 && country.activities.length ?
+                country.activities.map(a => (
+                        <p><strong>{a.name}</strong> in {a.seasons}</p>
+                        
+                ))
+            : 
+            <div className={styles.activitiesContainer}>
+                <h1>No activities posted yet.</h1>
+            </div>
+            }
         </div>
     )
 }

@@ -42,6 +42,7 @@
     font-size: 3em;
     display: flex;
     align-items: center;
+    text-align: center;
 }
 
 .flag {
@@ -53,27 +54,41 @@
     filter: drop-shadow(2px 5px 2px rgba(3,3,3,.5));
 }
 
-.card {
-    border: solid;
-    border-radius: 5px;
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: black;
-    color: white;
-    margin-top: 30px;       
-}
-
-
-.p {
-    margin: 2px;
-    align-self: flex-start;
-    
-}
-
 .outerCard {
     display:flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    z-index: 1;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: -60px;
+    z-index: 1;
+    width: 60%;
+    border-radius: 5px;
+    background-color: #e9e3e3;
+    color: #000000;
+    box-shadow: 2px 2px 5px 2px rgb(0 0 0 / 20%);
+}
+
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.dataValue {
+    margin-top: 0px;
+    font-weight: lighter;
+}
+
+.noAct {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    color: #000000;
 }

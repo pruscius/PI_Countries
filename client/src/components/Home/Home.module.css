@@ -117,7 +117,7 @@
 
 .countries {
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 .loader {
