@@ -140,9 +140,10 @@ export default function Home () {
                                 <option value="desc">Ascending</option>
                                 <option value="asc">Descending</option>
                             </select>
-                            <input className={styles.button}
-                            type="submit"
-                            value="ORDER"
+                            <input 
+                                className={styles.button}
+                                type="submit"
+                                value="ORDER"
                             />
                         </form>
                     </div>
