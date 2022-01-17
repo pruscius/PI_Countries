@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCountries, orderCountriesAlphAZ } from '../../actions/actions.js';
 import NavBar from "../NavBar/NavBar.jsx";
+import { IoArrowBack } from "react-icons/io5";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import styles from './CreateActivity.module.css';
 
@@ -106,7 +108,16 @@ export default function CreateActivity(){
         <div className={styles.body}>
             <NavBar />
             <div className={styles.header}>
+                <Link to="/home">
+                    <IoArrowBack size="2.3em" color="#fff" className={styles.back}/>
+                </Link>
+                <div className={styles.phraseContainer}>
+                    <h1 className={styles.phrase}>Help us grow.</h1>
+                </div>
 
+            </div>
+            <div className={styles.miniPhraseContainer}>
+                <h3 className={styles.miniPhrase}>Share your experience with us.</h3>
             </div>
 
             <div className={styles.formContainer}>

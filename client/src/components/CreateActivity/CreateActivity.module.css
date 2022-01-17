@@ -23,6 +23,39 @@
     background-repeat: no-repeat;
 }
 
+.back {
+    text-decoration: none;
+    cursor: pointer;
+    margin: 20px
+}
+
+.phraseContainer {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.phrase {
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.938);
+    text-shadow: #000 0.0625rem 0 0.625rem;
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.miniPhraseContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .err {
     color: red;
     font-size: 12px;
