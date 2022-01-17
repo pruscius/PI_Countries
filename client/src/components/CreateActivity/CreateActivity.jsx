@@ -134,7 +134,7 @@ export default function CreateActivity(){
                     <div className={styles.fields}>
                     <label className={styles.labels}>Country: </label>
                         <select className={styles.selects} name="countryId" onChange={e => handleChange(e)} onClick={handleClick}>
-                            <option>- Select Country -</option>
+                            <option>- Select Country</option>
                             {countries.map(c => (
                                 <option 
                                     key={c.id} 
@@ -199,7 +199,7 @@ export default function CreateActivity(){
                     <div className={styles.fields}>
                         <label className={styles.labels}>Difficulty: </label>
                         <select className={styles.selects} name="difficulty" value={activityPost.difficulty} onChange={e => handleChange(e)}>
-                            <option>- Set Difficulty -</option>
+                            <option>- Set Difficulty</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
