@@ -12,24 +12,37 @@
     font-family: 'Be Vietnam Pro', sans-serif;
 }
 
+.header {
+    background-image: url('../../assets/Map_Book.jpg');
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
 .err {
     color: red;
     font-size: 12px;
 }
 
-.createAct {
-    background: #FFC300;
-    border-radius: 6px;
-    border-style: solid;
-    border-color: white;
-    color: black;
-    box-sizing: border-box;
-    width: 461px;
+.formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .form {
+    background-color: #f9f5f1;
     display: flex;
     flex-direction: column;    
+    margin: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px 2px rgb(0 0 0 / 20%);
 }
 
 .fields {
@@ -42,26 +55,28 @@
     font-weight: bold;    
 }
 
+.selects {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    border-radius: 2px;
+    font-size: 0.9rem;
+}
+
 .btn {
     background: black;
-    color: #FFC300;
-    border-radius: 9px;
-    border-color: white;
+    color: #fff;
+    border-radius: 4px;
+    border-style: none;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 16px;
-    font-weight: 100;
     padding:5px;
-    text-shadow: 1px 1px 20px #000000;
     text-decoration: none;
-    display: inline-block;
     cursor: pointer;
     text-align: center;
     margin-top: 22px;
     margin-left: 22px; 
-    font-weight: bold;
     margin-bottom: 10px;
     box-sizing: border-box;
-    width: 130px
+    width: 130px;
 }
 
 .idCountry {
