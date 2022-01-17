@@ -22,7 +22,7 @@ export default function NavBar () {
                     </Link>
                 </div>
                 <div className={styles.optionDiv}>
-                    <Link className={styles.link} to="/postActivity">
+                    <Link className={styles.link} to="/post-activity">
                         <IoCreateOutline className={styles.iconAct} size="1.3em" color="#fff"/>
                         <h4 className={styles.btn}>Activity</h4>
                     </Link>

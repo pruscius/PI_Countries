@@ -10,7 +10,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/postActivity" component={CreateActivity} />
+        <Route exact path="/post-activity" component={CreateActivity} />
         <Route path="/countries/:id" component={CountryDetail} />
         <Route path="/">
           <h1>404 Not Found</h1>

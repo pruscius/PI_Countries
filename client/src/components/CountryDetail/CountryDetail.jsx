@@ -15,11 +15,11 @@ export default function CountryDetail () {
         dispatch(getDetail(id))
     }, [dispatch, id]);
 
+    console.log(typeof country)
+    
     return (
         <div className={styles.body}>
             <NavBar />
-            
-            
             
             <div className={styles.header}>
                 <Link to="/home">
@@ -32,12 +32,9 @@ export default function CountryDetail () {
                 </div>
             </div>
 
-
-
-
             <div className={styles.outerCard}>
                 {   
-                    Object.keys(country).length > 1 ?
+                    Object.keys(country).length > 1 && country !== 'No country found.' ?
                     <div key={country.id} className={styles.card}>
                         <div className={styles.dataContainer}>
                             <h4 className={styles.dataTitle}>Continent</h4>
@@ -68,9 +65,9 @@ export default function CountryDetail () {
                 <h1>Activities</h1>
 
                 {
-                    Object.keys(country).length > 1 && country.activities.length ?
-                    country.activities.map(a => (
-                        <p><strong>{a.name}</strong> in {a.seasons}</p>
+                    Object.keys(country).length > 1 && country !== 'No country found.' && country.activities.length ?
+                    country.activities.map((a, index) => (
+                        <p key={index}><strong>{a.name}</strong> in {a.seasons}</p>
                     ))
                     : 
                     <h2>No activities posted yet.</h2>
