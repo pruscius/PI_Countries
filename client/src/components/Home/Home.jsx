@@ -158,9 +158,9 @@ export default function Home () {
                     <div className={styles.countries}>
                         {
                             // acá vamos a renderizar sólo la porción correspondiente del estado global filteredCountries
-                            currentCountries === "No country" ? 
+                            !currentCountries.length ? 
                             <div className={styles.noCountryContainer}>
-                                <p className={styles.noCountry} >No countries found.</p> 
+                                <p className={styles.noCountry}>Sorry, no countries found.</p> 
                             </div>   
                             :
                             currentCountries.map(c=> (
