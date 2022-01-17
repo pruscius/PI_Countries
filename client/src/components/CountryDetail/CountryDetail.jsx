@@ -57,7 +57,7 @@ export default function CountryDetail () {
                         </div>
                         <div className={styles.dataContainer}>
                             <h4 className={styles.dataTitle}>Area</h4>
-                            <h4 className={styles.dataValue}>{country.area} km²</h4>
+                            <h4 className={styles.dataValue}>{country.area.toLocaleString('es-ES')} km²</h4>
                         </div>
                     </div>
                     :
@@ -66,19 +66,17 @@ export default function CountryDetail () {
             </div>
             <div className={styles.activitiesContainer}>
                 <h1>Activities</h1>
-            </div>
 
-            {
-                Object.keys(country).length > 1 && country.activities.length ?
-                country.activities.map(a => (
+                {
+                    Object.keys(country).length > 1 && country.activities.length ?
+                    country.activities.map(a => (
                         <p><strong>{a.name}</strong> in {a.seasons}</p>
-                        
-                ))
-            : 
-            <div className={styles.activitiesContainer}>
-                <h1>No activities posted yet.</h1>
+                    ))
+                    : 
+                    <h2>No activities posted yet.</h2>
+                }
+
             </div>
-            }
         </div>
     )
 }

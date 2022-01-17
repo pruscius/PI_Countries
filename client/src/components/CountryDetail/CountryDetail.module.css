@@ -86,9 +86,11 @@
     font-weight: lighter;
 }
 
+.activitiesContainer {
+    margin-left: 2vw;
+}
+
 .noAct {
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
+ 
     color: #000000;
 }
