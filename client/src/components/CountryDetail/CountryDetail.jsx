@@ -45,7 +45,7 @@ export default function CountryDetail () {
                         </div>
                         <div className={styles.dataContainer}>
                             <h4 className={styles.dataTitle}>Population</h4>
-                            <h4 className={styles.dataValue}>{country.population.toLocaleString('es-ES')} M</h4>
+                            <h4 className={styles.dataValue}>{country.population.toLocaleString('en-US')}</h4>
                         </div>
                         <div className={styles.dataContainer}>
                             <h4 className={styles.dataTitle}>Capital</h4>
@@ -57,7 +57,7 @@ export default function CountryDetail () {
                         </div>
                         <div className={styles.dataContainer}>
                             <h4 className={styles.dataTitle}>Area</h4>
-                            <h4 className={styles.dataValue}>{country.area.toLocaleString('es-ES')} km²</h4>
+                            <h4 className={styles.dataValue}>{country.area.toLocaleString('en-US')} km²</h4>
                         </div>
                     </div>
                     :

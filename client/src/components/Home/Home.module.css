@@ -17,18 +17,28 @@
 }
 
 .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-self: center;
     background-color: #0c0e25;
     border-radius: 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
     margin-top: 5vh;
-    width: 60%;
-    align-self: center;
-    padding: 1em;
+    width: 50%;
     box-shadow: 6px 4px 12px -4px rgb(0 0 0 / 42%);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.7em;
+    width: 100%;
+    max-width: 100%;
 }
 
 .select {
@@ -44,10 +54,15 @@
     outline: none;
 }
 
-.buttons {
+.filtersCont {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 5px;
+    margin-bottom: 0.7em;
 }
 
 .filters {
@@ -55,15 +70,11 @@
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     height: 20px;
-}
-
-.order {
-    margin: 10px
-}
-
-.alph_pop {
-    margin-right: 5px;
+    max-width: 100%;
 }
 
 .texts {
@@ -97,27 +108,28 @@
     font-family: 'Century Gothic';
     font-size: 1.05rem;
     font-weight: 100;
-    padding:5px;    
     text-decoration: none;
-    display: inline-block;
     cursor: pointer;
     border-style: none;
     text-align: center;
-    margin-top: 6px;
     font-weight: bold;
     margin-left: 15px;
 }
 
-.filtersCont {
+.orderForm {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%
 }
 
 .countries {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .loader {

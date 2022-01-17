@@ -1,3 +1,12 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .button {
     color: #f8f8f8;
     background-color: #000000;
@@ -5,13 +14,10 @@
     font-family: 'Century Gothic';
     font-size: 1.05rem;
     font-weight: 100;
-    padding:5px;    
     text-decoration: none;
-    display: inline-block;
     cursor: pointer;
     border-style: none;
     text-align: center;
-    margin-top: 6px;
     font-weight: bold;
-    margin-left: 15px;
+    margin-left: 6px;
 }

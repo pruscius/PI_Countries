@@ -91,9 +91,13 @@ export default function Home () {
                 <div className={styles.buttons}>
                     {/* Les pasamos la función setOrder para que puedan efectuar un cambio en un estado local
                     y así poder volver a renderizar la página */}
-                    <OrderAlph setOrder={setOrder} />
-                    <OrderPop  setOrder={setOrder}/>
                     <div>
+                        <OrderAlph setOrder={setOrder} />
+                    </div>
+                    <div>
+                        <OrderPop  setOrder={setOrder}/>
+                    </div>
+                    <div className={styles.buttonDivs}>
                         <button className={styles.button} onClick={handleRefreshClick}>REFRESH COUNTRIES</button>
                     </div>
                 </div>
@@ -111,6 +115,8 @@ export default function Home () {
                             <option value="Oceania">Oceania</option>
                             <option value="Polar">Polar</option>                        
                         </select>
+                    </div>
+                    <div className={styles.filters}>
                         <select className={styles.select} onChange={e => handleFilterActivity(e)}>
                             <option value="All">Filter By Activity</option>
                             {  
@@ -120,9 +126,9 @@ export default function Home () {
                             }
                         </select>
                     </div>
-                    <div>
+                    <div className={styles.filters}>
                         {/* BOTON PARA TRAER LOS FILTRADOS Y ORDENAMIENTOS DESDE EL BACK */}
-                        <form onSubmit={e=>handleNewSubmit(e)}>    
+                        <form className={styles.orderForm} onSubmit={e=>handleNewSubmit(e)}>    
                             <select className={styles.select} onChange={e=>handleChangeFilter(e)}>
                                 <option value="Americas">America</option>
                                 <option value="Africa">Africa</option>

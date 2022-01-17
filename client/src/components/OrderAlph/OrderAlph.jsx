@@ -19,7 +19,7 @@ export default function OrderAlph({ setOrder }) {
     }
     
     return (
-        <div>
+        <div className={styles.container}>
             <button className={styles.button} name="AZ" onClick={handleClick}>A-Z</button>
             <button className={styles.button} name="ZA" onClick={handleClick}>Z-A</button>
         </div>
