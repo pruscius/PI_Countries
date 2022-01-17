@@ -6,10 +6,10 @@ export default function Footer() {
     return ( 
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <a href="https://www.linkedin.com/in/andres-frank/" target="_blank">
+                <a href="https://www.linkedin.com/in/andres-frank/" target="_blank" rel="noreferrer">
                     <BsLinkedin size="2.3em" color="#000000" />
                 </a>
-                <a href="https://github.com/pruscius" target="_blank">
+                <a href="https://github.com/pruscius" target="_blank" rel="noreferrer">
                     <BsGithub size="2.3em" color="#000000" />
                 </a>            
             </div>

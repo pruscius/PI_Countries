@@ -33,6 +33,7 @@ export default function CreateActivity(){
     const dispatch = useDispatch();
 
     const [errors, setErrors] = useState({});
+    const [showErrors, setShowErrors] = useState(false);
     const [countryId, setCountryId] = useState([]);
     const [order, setOrder] = useState('');
 
@@ -55,7 +56,14 @@ export default function CreateActivity(){
 
     function handleChange(e) {
         if (e.target.name === 'countryId') {
-            setCountryId([...countryId, e.target.value]);
+            if (e.target.value.length < 4) {
+                const selectedCountry = {
+                    id: e.target.value,
+                    name: e.target.options[e.target.selectedIndex].getAttribute('countryname'),
+                    flag: e.target.options[e.target.selectedIndex].getAttribute('flag')
+                }
+                setCountryId([...countryId, selectedCountry]);
+            }
         } else if (e.target.name === 'seasons') {
             if (e.target.checked) {
                 setActivityPost({
@@ -96,6 +104,7 @@ export default function CreateActivity(){
             });
             setCountryId([]);
         } else {
+            setShowErrors(true);
             alert('Your activity is missing fields.')
         }
     }
@@ -126,16 +135,39 @@ export default function CreateActivity(){
                     <label className={styles.labels}>Country: </label>
                         <select className={styles.selects} name="countryId" onChange={e => handleChange(e)} onClick={handleClick}>
                             <option>- Select Country -</option>
-                            {countries.map(c => (<option key={c.id} value={c.id}>{c.name}</option>))}
+                            {countries.map(c => (
+                                <option 
+                                    key={c.id} 
+                                    countryname={c.name} 
+                                    flag={c.flag}
+                                    value={c.id}
+                                >{c.name}
+                                </option>))}
                         </select>
+                        <div className={styles.countryIds}>
+                            {
+                                countryId.map(c => 
+                                    <div 
+                                        key={c.id} 
+                                        className={styles.idCountry}
+                                        style={{backgroundImage: `url(${c.flag})`}}
+                                        onClick={() => handleDeleteClick(c)}
+                                    >
+                                        <div className={styles.del}>X</div>
+                                        
+                                        {/* <button className={styles.idButton} onClick={() => handleDeleteClick(c)}>X</button> */}
+                                    </div>
+                                    )
+                            }
+                        </div>
                         {
-                            errors.countryId && (
+                            showErrors && errors.countryId && (
                             <p className={styles.err}>{errors.countryId}</p>
                             )
                         }
                     </div>
                     <div className={styles.fields}>
-                        <label className={styles.labels}>Name: </label>
+                        <label className={styles.labels}>Activity Name: </label>
                         <input 
                             type="text"
                             value={activityPost.name}
@@ -143,7 +175,7 @@ export default function CreateActivity(){
                             onChange={e => handleChange(e)}
                         />
                         {
-                            errors.name && (
+                            showErrors && errors.name && (
                             <p className={styles.err}>{errors.name}</p>
                             )
                         }
@@ -159,7 +191,7 @@ export default function CreateActivity(){
                             <option value="5">5</option>
                         </select>
                         {
-                            errors.difficulty && (
+                            showErrors && errors.difficulty && (
                             <p className={styles.err}>{errors.difficulty}</p>
                             )
                         }
@@ -173,7 +205,7 @@ export default function CreateActivity(){
                             onChange={e => handleChange(e)}
                         />
                         {
-                            errors.duration && (
+                            showErrors && errors.duration && (
                             <p className={styles.err}>{errors.duration}</p>
                             )
                         }
@@ -217,22 +249,15 @@ export default function CreateActivity(){
                             Spring
                         </label>
                         {
-                            errors.seasons && (
+                            showErrors && errors.seasons && (
                             <p className={styles.err}>{errors.seasons}</p>
                             )
                         }
                     </div>
-
-                    <input className={styles.btn} type="submit" value="Create Activity" />
+                    <div className={styles.btnContainer}>
+                        <input className={styles.btn} type="submit" value="Create Activity" />
+                    </div>
                 </form>
-                {
-                    countryId.map(c => 
-                        <div className={styles.idCountry}>
-                            <p>{c}</p>
-                            <button className={styles.idButton} onClick={() => handleDeleteClick(c)}>X</button>
-                        </div>
-                        )
-                }
             </div>
         </div>
     )
