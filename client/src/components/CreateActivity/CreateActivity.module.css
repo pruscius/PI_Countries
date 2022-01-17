@@ -82,7 +82,9 @@
 }
 
 .fields {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
 }
 
 .labels {
@@ -91,14 +93,37 @@
     font-weight: bold;    
 }
 
-.selects:focus {
-    outline: none;
-}
-
 .selects {
     font-family: 'Be Vietnam Pro', sans-serif;
     border-radius: 2px;
     font-size: 0.9rem;
+    margin-top: 3px;
+}
+
+.selects:focus {
+    outline: none;
+}
+
+
+.activityNameInput, .durationInput {
+    background-color: #f9f5f1;
+    border-width: 0 0 1px;
+    border-color: #000000;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    margin-right: 0.6em;
+    font-size: 1rem;
+}
+
+.activityNameInput:focus, .durationInput:focus {
+    outline: none;
+}
+
+.seasons {
+    display: flex;
+}
+
+.checkbox {
+    background-color: #000000;
 }
 
 .btnContainer {

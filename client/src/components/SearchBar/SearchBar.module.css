@@ -11,13 +11,12 @@
     border-width: 0 0 1px;
     border-color: #000000;
     font-family: 'Be Vietnam Pro', sans-serif;
-    margin-right: 0.6em;
+    margin-right: 1em;
 }
 
 .input:focus {
     outline: none;
     background-color: #ebebeb;
-    color: #000000;
 }
 
 .searchBtn {

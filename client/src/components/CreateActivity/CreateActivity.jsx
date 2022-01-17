@@ -154,8 +154,6 @@ export default function CreateActivity(){
                                         onClick={() => handleDeleteClick(c)}
                                     >
                                         <div className={styles.del}>X</div>
-                                        
-                                        {/* <button className={styles.idButton} onClick={() => handleDeleteClick(c)}>X</button> */}
                                     </div>
                                     )
                             }
@@ -169,14 +167,31 @@ export default function CreateActivity(){
                     <div className={styles.fields}>
                         <label className={styles.labels}>Activity Name: </label>
                         <input 
+                            className={styles.activityNameInput}
                             type="text"
                             value={activityPost.name}
                             name="name"
                             onChange={e => handleChange(e)}
+                            autocomplete="off"
                         />
                         {
                             showErrors && errors.name && (
                             <p className={styles.err}>{errors.name}</p>
+                            )
+                        }
+                    </div>
+                    <div className={styles.fields}>
+                        <label className={styles.labels}>Duration (in hours): </label>
+                        <input
+                            className={styles.durationInput}
+                            type="text"    
+                            value={activityPost.duration}
+                            name="duration"
+                            onChange={e => handleChange(e)}
+                        />
+                        {
+                            showErrors && errors.duration && (
+                            <p className={styles.err}>{errors.duration}</p>
                             )
                         }
                     </div>
@@ -197,57 +212,45 @@ export default function CreateActivity(){
                         }
                     </div>
                     <div className={styles.fields}>
-                        <label className={styles.labels}>Duration (in hours): </label>
-                        <input
-                            type="text"    
-                            value={activityPost.duration}
-                            name="duration"
-                            onChange={e => handleChange(e)}
-                        />
-                        {
-                            showErrors && errors.duration && (
-                            <p className={styles.err}>{errors.duration}</p>
-                            )
-                        }
-                    </div>
-                    <div className={styles.fields}>
                         <label className={styles.labels}>Seasons: </label>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="seasons"
-                                value="Summer"    
-                                onChange={(e) => handleChange(e)}
-                            />
-                            Summer
-                        </label>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="seasons"
-                                value="Fall"    
-                                onChange={(e) => handleChange(e)}
-                            />
-                            Fall
-                        </label>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="seasons"
-                                value="Winter"    
-                                onChange={(e) => handleChange(e)}
-                            />
-                            Winter
-                        </label>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="seasons"
-                                value="Spring"    
-                                onChange={(e) => handleChange(e)}
-                            />
-                            Spring
-                        </label>
+                        <div className={styles.seasons}>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="seasons"
+                                    value="Summer"    
+                                    onChange={(e) => handleChange(e)}
+                                />
+                                Summer
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="seasons"
+                                    value="Fall"    
+                                    onChange={(e) => handleChange(e)}
+                                />
+                                Fall
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="seasons"
+                                    value="Winter"    
+                                    onChange={(e) => handleChange(e)}
+                                />
+                                Winter
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="seasons"
+                                    value="Spring"    
+                                    onChange={(e) => handleChange(e)}
+                                />
+                                Spring
+                            </label>
+                        </div>
                         {
                             showErrors && errors.seasons && (
                             <p className={styles.err}>{errors.seasons}</p>
