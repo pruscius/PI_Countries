@@ -11,8 +11,8 @@ export default function NavBar () {
             <div className={styles.nameCont}>
                 <Link className={styles.link} to="/home">
                     <h2 className={styles.brandName}>Countrivities</h2> 
+                    <GiWorld color="#fff" size="1.5em"/>
                 </Link>
-                <GiWorld color="#fff" size="1.5em"/>
             </div>
             <div className={styles.options}>
                 <div className={styles.optionDiv}>

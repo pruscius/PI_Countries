@@ -84,7 +84,7 @@
 .fields {
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 8px;
 }
 
 .labels {

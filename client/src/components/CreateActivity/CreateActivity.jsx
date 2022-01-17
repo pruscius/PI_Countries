@@ -95,7 +95,7 @@ export default function CreateActivity(){
         const completedActivity = {...activityPost, countryId: countryId};
         if (!Object.keys(errors).length) {
             const post = await axios.post('/activity', completedActivity)
-            alert('Your activity was created');
+            alert('Your activity was created!');
             setActivityPost({
                 name: '',
                 difficulty: '',
@@ -105,7 +105,7 @@ export default function CreateActivity(){
             setCountryId([]);
         } else {
             setShowErrors(true);
-            alert('Your activity is missing fields.')
+            alert('Your activity has missing fields.')
         }
     }
 
@@ -188,6 +188,7 @@ export default function CreateActivity(){
                             value={activityPost.duration}
                             name="duration"
                             onChange={e => handleChange(e)}
+                            autocomplete="off"
                         />
                         {
                             showErrors && errors.duration && (
