@@ -73,7 +73,7 @@
 }
 
 .optionDiv:hover {
-    transform: translate3d(0,-1.2px,0);
+    transform: translate3d(0,1.2px,0);
 }
 
 /* .btn:hover {
