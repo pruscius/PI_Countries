@@ -95,7 +95,7 @@ export default function Home () {
                         <OrderAlph setOrder={setOrder} />
                     </div>
                     <div>
-                        <OrderPop  setOrder={setOrder}/>
+                        <OrderPop setOrder={setOrder}/>
                     </div>
                     <div className={styles.buttonDivs}>
                         <button className={styles.button} onClick={handleRefreshClick}>REFRESH COUNTRIES</button>
