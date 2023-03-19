@@ -13,7 +13,7 @@ const router = Router();
 // })
 
 // router.get('/', async (req, res) => {
-const getData = async (next) => {
+const getData = async (req, res, next) => {
     try {
         const allCountries = await Country.findAll(); //busco los paises en la DB
         if (!allCountries.length) {
