@@ -5,47 +5,8 @@ const axios = require('axios');
 
 const router = Router();
 
-// router.get('/', (req, res) => {
-//     Country.findAll()
-//         .then(response=>{
-//             res.json(response)
-//         }).catch(e=>res.json(e));
-// })
-const getData = async (req, res, next) => {
-    try {
-        const allCountries = await Country.findAll(); //busco los paises en la DB
-        if (!allCountries.length) {
-            const data = await axios.get('https://restcountries.com/v2/all');
-            // .data devuelve la data del get
-            const json = data.data;
-            for (var i = 0; i < json.length; i++) {
-                const [country, created] = await Country.findOrCreate({
-                    where: {
-                        name: json[i].name
-                    },
-                    defaults: {
-                        id: json[i].alpha3Code,
-                        name: json[i].name,
-                        flag: json[i].flag,
-                        region: json[i].region,
-                        capital: json[i].capital,
-                        subregion: json[i].subregion,
-                        area: json[i].area,
-                        population: json[i].population
-                    }
-                })
-            }
-            return next();
-        } else {
-            return next();
-        }
-    } catch (e) {
-        console.log(e);
-    }
-}
-
-router.get('/', getData, async (req, res) => {
-    // router.get('/', async (req, res) => {
+// router.get('/', getData, async (req, res) => {
+router.get('/', async (req, res) => {
     const { name, order, filter } = req.query;
     console.log(order, filter)
     if (order && filter) {
