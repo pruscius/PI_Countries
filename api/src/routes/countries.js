@@ -5,8 +5,8 @@ const axios = require('axios');
 
 const router = Router();
 
-// router.get('/', getData, async (req, res) => {
-router.get('/', async (req, res) => {
+router.get('/', getData, async (req, res) => {
+// router.get('/', async (req, res) => {
     const { name, order, filter } = req.query;
     console.log(order, filter)
     if (order && filter) {
